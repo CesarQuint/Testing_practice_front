@@ -1,0 +1,44 @@
+<script>
+
+    import { createEventDispatcher } from 'svelte'
+    import { HomeStore, HomesStore, ToastStore } from '../stores'
+
+    import HomesService from '../$services/homes.service'
+
+    import Input from '../$components/input.svelte'
+    import Form from '../$components/form.svelte'
+
+    const dispatch = createEventDispatcher()
+
+    let loading = false
+    let data = {
+        name: $HomeStore.name,
+        description: $HomeStore.description,
+    }
+
+    async function updateHome() {
+
+        loading = false
+        const response = await HomesService.updateHome($HomeStore._id, data)
+        loading = true
+
+        if(response.error)
+            return ToastStore.error(response.error)
+
+        HomeStore.set(response.data)
+        HomesStore.replace(response.data)
+
+        ToastStore.success('Actualizado')
+        dispatch('updated')
+    }
+
+</script>
+
+<Form on:submit={ updateHome } on:canceled { loading } >
+    <div class="columns">
+        <Input bind:value={ data.name } label="Nombre" icon="tag" placeholder="Ingrese nombre" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.description } label="Descripción" icon="tag" placeholder="Ingrese descripción" />
+    </div>
+</Form>
