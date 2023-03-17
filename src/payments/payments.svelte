@@ -10,7 +10,7 @@
     import Button from '../$components/button.svelte'
 
     let loading = false 
-    let query = {}
+    let query = {all:true }
     let metadata= {}
 
     onMount(getPayments)

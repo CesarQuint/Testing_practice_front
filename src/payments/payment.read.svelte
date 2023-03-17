@@ -8,6 +8,10 @@
     <table class="table is-fullwidth">
         <tbody>
             <tr>
+                <th>Usuario</th>
+                <td>{$PaymentStore.user.name}</td>
+            </tr>
+            <tr>
                 <th>Nombre</th>
                 <td>{ $PaymentStore.name }</td>
             </tr>

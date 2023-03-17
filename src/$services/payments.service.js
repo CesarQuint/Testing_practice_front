@@ -11,10 +11,7 @@ async function getPayments(query){
     return API({
         method:'get',
         route:'/payments',
-        query:{
-            all:true,
-            find:query.find
-        }
+        query
     })
 }
 

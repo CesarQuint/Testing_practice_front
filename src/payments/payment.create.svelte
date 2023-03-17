@@ -6,6 +6,7 @@
 
     import Input from '../$components/input.svelte'
     import Form from '../$components/form.svelte'
+    import SearchDrop from '../$components/searchDrop.svelte'
 
     //TODO: revisar documentacion que es createEvent....
 
@@ -32,6 +33,9 @@
 
 
 <Form on:submit={ createPayment } on:canceled { loading } >
+    <div class="columns">
+        <SearchDrop/>
+    </div>
     <div class="columns">
         <Input bind:value={ data.name } label="Nombre" icon="tag" placeholder="Ingrese el nombre" />
     </div>
