@@ -6,7 +6,7 @@
 
     import Input from '../$components/input.svelte'
     import Form from '../$components/form.svelte'
-    import UserFind from '../users/users.findOne.svelte'
+    import UserFind from '../users/user.select.svelte'
 
     //TODO: revisar documentacion que es createEvent....
 
