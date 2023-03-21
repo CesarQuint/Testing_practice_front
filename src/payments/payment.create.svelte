@@ -1,14 +1,14 @@
 <script>
-    import {createEventDispatcher} from 'svelte'
-    import {PaymentsStore, ToastStore} from '../stores'
+
+    import { createEventDispatcher } from 'svelte'
+    import { PaymentsStore, ToastStore } from '../stores'
 
     import PaymentsService from '../$services/payments.service'
 
     import Input from '../$components/input.svelte'
     import Form from '../$components/form.svelte'
-    import UserFind from '../users/user.select.svelte'
 
-    //TODO: revisar documentacion que es createEvent....
+    import UserSelect from '../users/user.select.svelte'
 
     const dispatch = createEventDispatcher()
 
@@ -29,12 +29,12 @@
         ToastStore.success('¡Pago Creado!')
         dispatch('created')
     }
-    
+
 </script>
 
 <Form on:submit={ createPayment } on:canceled { loading } >
     <div class="columns">
-        <UserFind  bind:userId={data.userId}/>    
+        <UserSelect bind:userId={ data.userId } />
     </div>
     <div class="columns">
         <Input bind:value={ data.name } label="Nombre" icon="tag" placeholder="Ingrese el nombre" />

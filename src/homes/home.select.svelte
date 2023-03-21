@@ -1,52 +1,52 @@
 <script>
 
-    import { UsersStore, ToastStore } from '../stores'
+    import { HomesStore, ToastStore } from '../stores'
     import { createEventDispatcher } from 'svelte'
 
-    import UsersService from '../$services/users.service'
+    import HomesService from '../$services/homes.service'
 
     import DropdownSelect from '../$components/dropdown.select.svelte'
 
     const dispatch = createEventDispatcher()
 
-    export let userId = null
+    export let homeId = null
     export let column = true
 
     let loading = false
     let query = {}
     let show = false
 
-    async function getUsers() {
+    async function getHomes() {
         
         loading = true
-        const response = await UsersService.getUsers(query)
+        const response = await HomesService.getHomes(query)
         loading = false
 
         if(response.error) 
             return ToastStore.error(response.error)
 
-        UsersStore.set(response.data.users)
-        show = !!response.data.users.length
+        HomesStore.set(response.data.homes)
+        show = !!response.data.homes.length
     }
 
     function onKeyup() {
 
-        UsersStore.set([])
-        userId = null
+        HomesStore.set([])
+        homeId = null
         show = false
 
         if(query.find.length > 1)
-            getUsers()
+            getHomes()
     }
 
     function onSelect(event) {
 
-        const user = event.detail
+        const home = event.detail
 
-        userId = user._id
-        query.find = user.name
+        homeId = home._id
+        query.find = home.name
 
-        dispatch('select', user)
+        dispatch('select', home)
     }
 
 </script>
@@ -54,12 +54,12 @@
 <DropdownSelect 
     on:select={ onSelect }
     on:keyup={ onKeyup }
-    bind:value={ userId }
+    bind:value={ homeId }
     bind:text={ query.find }
     bind:show
     label="Usuario"
     placeholder="Buscar usuario"
-    items={ $UsersStore }
+    items={ $HomesStore }
     prop="name"
     { column }
 />

@@ -1,7 +1,9 @@
 <script>
-    import {PaymentStore} from '../stores'
 
-    import Utils from '../utils';
+    import { PaymentStore } from '../stores'
+
+    import Utils from '../utils'
+
 </script>
 
 <div class="table-container">
