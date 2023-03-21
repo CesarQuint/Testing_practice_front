@@ -1,23 +1,23 @@
 <script>
 
-import { UsersStore, UserStore, ToastStore } from '../stores'
+    import { UsersStore, ToastStore } from '../stores'
     import {createEventDispatcher} from 'svelte'
 
     import UsersService from '../$services/users.service'
-    import User from '../users/user.read.svelte';
+    import Input from '../$components/input.svelte'
 
     const dispatch =createEventDispatcher()
 
     export let value = null
-    export let cargado =false
+    let cargado =false
     export let userId = null
 
-    
-    let query ={find:value}
-    let metadata
-    $:value =query.find=value
 
     async function getUsers() {
+
+        let query ={find:value}
+        let metadata
+
       console.log(value.length);
       if (value.length < 2) {
         cargado=false
@@ -40,17 +40,17 @@ import { UsersStore, UserStore, ToastStore } from '../stores'
     }
 
     function Click(item){
-      dispatch('Click',)
-      userId = item._id
-      value = item.name
+        cargado=false
+        dispatch('Click',)
+        userId = item._id
+        value = item.name
     }
 </script>
 
 <div class="dropdown is-active">
     <div class="dropdown-trigger">
-      <input aria-haspopup="true" aria-controls="dropdown-menu"
-        bind:value on:keyup={getUsers}  
-      />
+      <Input type="text" aria-haspopup="true" aria-controls="dropdown-menu"
+      bind:value label="Nombre Creador" icon="tag" on:keyup={getUsers}  />
     </div>
     {#if cargado}
       <div class='dropdown-menu'id="dropdown-menu" role="menu">

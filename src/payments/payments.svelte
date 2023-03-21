@@ -27,6 +27,7 @@
         metadata=response.data.metadata
 
     }
+
 </script>
 
 
@@ -37,6 +38,7 @@
 <Table bind:query items={ $PaymentsStore.length } on:change={ getPayments } { metadata } { loading }>
     <thead>
         <th>#</th>
+        <th>Creador</th>
         <th>Nombre</th>
         <th>Cantidad</th>
         <th>Fecha de Creacion</th>
@@ -45,8 +47,9 @@
         {#each $PaymentsStore as payment, index}
             <tr on:click={() => PaymentStore.modalRead(payment)}>
                 <td>{ (index+1) + ( metadata.page * metadata.limit ) }</td>
+                <td>{payment.user.name}</td>
                 <td>{payment.name}</td>
-                <td>{payment.amount}</td>
+                <td>{Utils.cash(payment.amount)}</td>
                 <td>{Utils.dateLarge(payment.created)}</td>
             </tr>
         {/each}
