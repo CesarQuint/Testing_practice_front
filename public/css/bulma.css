@@ -3174,7 +3174,7 @@ a.tag:hover {
   padding-top: 4px;
   position: absolute;
   top: 100%;
-  z-index: 20; }
+  z-index: 40; }
 
 .dropdown-content {
   background-color: white;
