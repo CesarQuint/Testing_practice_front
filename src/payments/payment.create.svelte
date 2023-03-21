@@ -6,7 +6,15 @@
 
     import Input from '../$components/input.svelte'
     import Form from '../$components/form.svelte'
-    import SearchDrop from '../$components/searchDrop.svelte'
+    import UserFind from '../users/users.findOne.svelte'
+
+    ////
+
+    function setUser(userId,userN) {
+    console.log(userN,userId);
+    }
+
+    ////
 
     //TODO: revisar documentacion que es createEvent....
 
@@ -29,12 +37,13 @@
         ToastStore.success('¡Pago Creado!')
         dispatch('created')
     }
+    
 </script>
 
-
+{data.userId}
 <Form on:submit={ createPayment } on:canceled { loading } >
     <div class="columns">
-        <SearchDrop/>
+        <UserFind on:Click={setUser} bind:userId={data.userId}/>    
     </div>
     <div class="columns">
         <Input bind:value={ data.name } label="Nombre" icon="tag" placeholder="Ingrese el nombre" />
