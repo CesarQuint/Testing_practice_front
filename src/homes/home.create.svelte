@@ -8,6 +8,8 @@
     import Input from '../$components/input.svelte'
     import Form from '../$components/form.svelte'
 
+    import UserSelect from '../users/user.select.svelte'
+
     const dispatch = createEventDispatcher()
 
     let loading = false
@@ -31,6 +33,9 @@
 </script>
 
 <Form on:submit={ createHome } on:canceled { loading } >
+    <div class="columns">
+        <UserSelect bind:userId={data.userId}/>
+    </div>
     <div class="columns">
         <Input bind:value={ data.name } label="Nombre" icon="tag" placeholder="Ingrese nombre" />
     </div>
