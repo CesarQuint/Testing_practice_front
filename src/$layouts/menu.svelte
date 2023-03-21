@@ -63,6 +63,7 @@
                 <li on:click={() => navigateTo('home')} class:is-active={path === '/home'}><a>Home</a></li>
                 <li on:click={() => navigateTo('users')} class:is-active={path === '/users'}><a>Usuarios</a></li>
                 <li on:click={() => navigateTo('payments')} class:is-active={path === '/payments'}><a>Pagos</a></li>
+                <li on:click={() => navigateTo('homes')} class:is-active={path === '/homes'}><a>Casas</a></li>
             </ul>
         </div>
         <slot></slot>

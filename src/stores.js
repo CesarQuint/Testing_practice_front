@@ -14,6 +14,12 @@ export const PaymentStore = Model('Payment')
 
 export const PaymentsStore= Collection('Payments')
 
+//*Homes Stores
+
+export const HomeStore = Model('Home')
+
+export const HomesStore= Collection('Homes')
+
 function Model(name) {
 
     const { subscribe, update, set } = writable(null)
