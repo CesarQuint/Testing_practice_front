@@ -1,6 +1,6 @@
 <script>
 
-    import { createEventDispatcher } from 'svelte'
+    import { createEventDispatcher ,tick} from 'svelte'
 
     export let value = null
     export let text = null
@@ -23,10 +23,10 @@
         dispatch('select', item)
     }
 
-    function onBlur() {
-        setTimeout(() => {
-            show = false
-        }, 100)
+    async function  onBlur() {
+        await tick(()=>{
+        show = false
+        })
     }
 
 </script>
