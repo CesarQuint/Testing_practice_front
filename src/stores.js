@@ -38,7 +38,7 @@ function Model(name) {
         ModalStore.set(`${name}Update`)
         if(data) set(data)
     }
-    
+
     function modalDelete(data = null) {
         ModalStore.set(`${name}Delete`)
         if(data) set(data)

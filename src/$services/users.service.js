@@ -6,6 +6,7 @@ export default {
     getUsers,
     getUser,
     updateUser,
+    updateUserPassword,
     deleteUser
 }
 
@@ -44,6 +45,14 @@ async function updateUser(userId, data) {
     return API({
         method: 'put',
         route: `/users/${ userId }`,
+        data
+    })
+}
+
+async function updateUserPassword(userId, data) {
+    return API({
+        method: 'put',
+        route: `/users/${ userId }/password`,
         data
     })
 }
