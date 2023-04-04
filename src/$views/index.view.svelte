@@ -1,6 +1,8 @@
 <script>
 
 	import UserLogin from '../users/user.login.svelte'
+	import UserRegister from '../users/user.create.svelte'
+  import User from '../users/user.login.svelte';
 
 	let logIn = true
 
@@ -74,16 +76,11 @@
 					<div class="card-content">
 						<div class="content mt-4">
 							<h1 class="title is-4">Administrador de <span>Pagos</span></h1>
-							{#if logIn}
+							<h1 class="title is-5"><i class="fas fa-eye"></i> ADMINISTRADOR</h1>
 								<UserLogin/>
 								<div class="mt-4 is-flex">
-									<a href="#" on:click={()=>{logIn = !logIn}}>¿Aun no tienes Cuenta? Registrate</a>
 									<a href="#">Olvide mi contraseña</a>
 								</div>
-							{/if}
-							{#if !logIn}
-								<h2>Es Falso</h2>
-							{/if}
 						</div>
 					</div>
 			</div>

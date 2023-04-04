@@ -34,6 +34,13 @@
 
 </script>
 
+<style>
+    div.container.nav{
+        display: flex !important;
+        justify-content: space-between;
+    }
+</style>
+
 <!-- svelte-ignore a11y-missing-attribute -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 
@@ -41,23 +48,24 @@
     <section class="hero is-primary">
         <div class="hero-head">
             <nav class="navbar">
-                <div class="container">
-                    <div class="navbar-brand">
-                        <a class="navbar-item">
-                            SVELTE APP
+                <div class="container nav">
+                    <span class="navbar-brand">
+                        <a class="navbar-item"
+                        on:click={()=>navigateTo("/home")}
+                        >
+                            Administrador de Pagos
                         </a>
-                    </div>
-                    <div class="navbar-menu">
+                    </span>
+                    <span class="navbar-menu is-active">
                         <div class="navbar-end">
                             <a on:click={ logout } class="navbar-item">Salir</a>
                         </div>
-                    </div>
+                    </span>
                 </div>
             </nav>
         </div>
     </section>
-    <br>
-    <div class="container">
+    <div class="mt-4 container">
         <div class="tabs">
             <ul>
                 <li on:click={() => navigateTo('home')} class:is-active={path === '/home'}><a>Home</a></li>
@@ -66,6 +74,8 @@
                 <li on:click={() => navigateTo('homes')} class:is-active={path === '/homes'}><a>Casas</a></li>
             </ul>
         </div>
-        <slot></slot>
+        <div class="container is-fluid">
+            <slot></slot>
+        </div>
     </div>
 {/if}
