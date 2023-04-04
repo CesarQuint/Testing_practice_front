@@ -4,6 +4,7 @@
     import { HomeStore, HomesStore, ToastStore } from '../stores'
 
     import HomesService from '../$services/homes.service'
+    import SelectUser from '../users/user.select.svelte'
 
     import Input from '../$components/input.svelte'
     import Form from '../$components/form.svelte'
@@ -12,8 +13,11 @@
 
     let loading = false
     let data = {
-        name: $HomeStore.name,
-        description: $HomeStore.description,
+        street: $HomeStore.street,
+        extnumber: $HomeStore.extnumber,
+        intnumber: $HomeStore.intnumber,
+        colony: $HomeStore.colony,
+        section: $HomeStore.section,
     }
 
     async function updateHome() {
@@ -36,9 +40,21 @@
 
 <Form on:submit={ updateHome } on:canceled { loading } >
     <div class="columns">
-        <Input bind:value={ data.name } label="Nombre" icon="tag" placeholder="Ingrese nombre" />
+        <SelectUser/>
     </div>
     <div class="columns">
-        <Input bind:value={ data.description } label="Descripción" icon="tag" placeholder="Ingrese descripción" />
+        <Input bind:value={ data.street } label="Calle" icon="tag" placeholder="Ingrese nombre" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.extnumber } label="Numero Exterior" icon="tag" placeholder="Ingrese descripción" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.intnumber } label="Numero Interior" icon="tag" placeholder="Ingrese nombre" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.colony } label="Colonia" icon="tag" placeholder="Ingrese descripción" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.section } label="Seccion" icon="tag" placeholder="Ingrese descripción" />
     </div>
 </Form>

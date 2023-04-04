@@ -35,6 +35,9 @@
         <Input bind:value={ data.name } label="Nombre" icon="tag" placeholder="Ingrese el nombre" />
     </div>
     <div class="columns">
+        <Input bind:value={ data.phone } label="Telefono" icon="phone" placeholder="Ingrese el numero de telefono" />
+    </div>
+    <div class="columns">
         <Input bind:value={ data.email } label="Correo" icon="envelope" placeholder="Ingrese el correo" />
     </div>
     <div class="columns">

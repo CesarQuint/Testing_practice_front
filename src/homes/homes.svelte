@@ -28,7 +28,7 @@
         HomesStore.set(response.data.homes)
         metadata = response.data.metadata
 
-        console.log(response.data.homes);
+        console.log($HomesStore);
     }
 
 </script>
@@ -40,18 +40,24 @@
 <Table bind:query items={ $HomesStore.length } on:change={ getHomes } { metadata } { loading }>
     <thead>
         <th>#</th>
-        <th>Creado por</th>
-        <th>Nombre</th>
-        <th>Descripcion</th>
-        <th>Fecha</th>
+        <th>Dueño</th>
+        <th>Calle</th>
+        <th>N.Exterior</th>
+        <th>N.Interior</th>
+        <th>Colonia</th>
+        <th>Seccion</th>
+        <th>Fecha de creacion</th>
     </thead>
     <tbody>
         {#each $HomesStore as home, index}
             <tr on:click={() => HomeStore.modalRead(home)}>
                 <td>{ (index+1) + ( metadata.page * metadata.limit ) }</td>
-                <td>{ home.user.name }</td>
-                <td>{ home.name }</td>
-                <td>{ home.description }</td>
+                <td>{ home.user ? home.user.name : 'No Asignado' }</td>
+                <td>{ home ? home.sreet != '' ? home.street :'No asignado' : 'No Asignada' }</td>
+                <td>{ home ? home.extnumber != '' ? home.extnumber :'No asignado'  : 'No Asignado' }</td>
+                <td>{ home ? home.intnumber != '' ? home.intnumber :'No asignado'  : 'No Asignado' }</td>
+                <td>{ home ? home.colony != '' ? home.colony :'No asignada'  : 'No Asignada' }</td>
+                <td>{ home ? home.section != '' ? home.section :'No asignada'  : 'No Asignada' }</td>
                 <td>{ Utils.dateTimeLarge(home.created) }</td>
             </tr>
         {/each}

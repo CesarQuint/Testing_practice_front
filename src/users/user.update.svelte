@@ -14,6 +14,7 @@
     let data = {
         name: $UserStore.name,
         email: $UserStore.email,
+        phone: $UserStore.phone
     }
 
     async function updateUser() {
@@ -39,5 +40,8 @@
     </div>
     <div class="columns">
         <Input bind:value={ data.email } label="Correo" icon="envelope" placeholder="Ingrese el correo" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.phone } label="Telefono" icon="phone" placeholder="Ingrese el numero de telefono" />
     </div>
 </Form>

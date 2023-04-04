@@ -18,6 +18,16 @@
                 <td>{ $UserStore.email }</td>
             </tr>
             <tr>
+                <th>Telefono</th>
+                <td>{ $UserStore.phone }</td>
+            </tr>
+            {#if $UserStore.homeId}
+                <tr>
+                    <th>Casa</th>
+                    <td>Aqui ira la casa</td>
+                </tr>
+            {/if}
+            <tr>
                 <th>Fecha de registro</th>
                 <td>{ Utils.dateTimeLarge($UserStore.created) }</td>
             </tr>

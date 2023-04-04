@@ -27,6 +27,7 @@
 
         UsersStore.set(response.data.users)
         metadata = response.data.metadata
+        console.log($UsersStore);
     }
 
 </script>
@@ -40,7 +41,9 @@
         <th>#</th>
         <th>Nombre</th>
         <th>Correo</th>
-        <th>Fecha</th>
+        <th>Telefono</th>
+        <th>Casa</th>
+        <th>Fecha de Registro</th>
     </thead>
     <tbody>
         {#each $UsersStore as user, index}
@@ -48,6 +51,15 @@
                 <td>{ (index+1) + ( metadata.page * metadata.limit ) }</td>
                 <td>{ user.name }</td>
                 <td>{ user.email }</td>
+                <td>{ user.phone}</td>
+                {#if user.homeId}
+                <td> <i class="fas fa-home"></i>
+                    {#if user.homeId.street}
+                        Casa en ..
+                    {/if}
+                    Incompleta
+                </td>    
+                {/if}
                 <td>{ Utils.dateLarge(user.created) }</td>
             </tr>
         {/each}
