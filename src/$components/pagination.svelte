@@ -43,7 +43,7 @@
             <span class="icon"><i class="fas fa-arrow-left" /></span>
         </button>
         <button class="button is-white">
-            <span>{ metadata.page + 1 } de { metadata.pages }</span>
+            <span>{ metadata.page } de { metadata.pages }</span>
         </button>
         <button on:click={ onNext } class="button is-white" disabled={ metadata.next === null }>
             <span class="icon"><i class="fas fa-arrow-right" /></span>

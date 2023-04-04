@@ -24,6 +24,12 @@ td {
 .button {
   border-radius: 8px !important; }
 
+.mt-2 {
+  margin-top: 0.5rem; }
+
+.mt-4 {
+  margin-top: 1rem; }
+
 /* Bulma Utilities */
 .button, .input, .textarea, .select select, .file-cta,
 .file-name, .pagination-previous,

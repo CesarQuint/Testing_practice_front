@@ -55,6 +55,15 @@ td {
     border-radius: 8px !important;
 }
 
+.mt-2 {
+    margin-top: 0.5rem
+}
+
+.mt-4 {
+    margin-top: 1rem
+}
+
+
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/elements/_all.sass";

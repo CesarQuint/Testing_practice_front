@@ -2,6 +2,7 @@ import { writable } from 'svelte/store'
 
 export const ModalStore = writable(null)
 export const ToastStore = Toast(null)
+
 export const SessionStore = Model('Session')
 
 export const UserStore = Model('User')
