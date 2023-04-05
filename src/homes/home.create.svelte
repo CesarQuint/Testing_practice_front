@@ -7,10 +7,12 @@
 
     import Input from '../$components/input.svelte'
     import Form from '../$components/form.svelte'
+    import Button from '../$components/button.svelte'
     import UserSelect from '../users/user.select.svelte'
 
     const dispatch = createEventDispatcher()
 
+    let show = false
     let loading = false
     let data = {}
 
@@ -32,8 +34,15 @@
 </script>
 
 <Form on:submit={ createHome } on:canceled { loading } >
+
     <div class="columns">
-        <UserSelect bind:userId={data.userId}/>
+        <div class="column">
+            <Button on:click={ ()=>{show = !show} } text={ !show ? "Agregar Usuario" :"No Agregar Usuario" } light color='primary'/>
+        </div>
+        {#if show}
+            <UserSelect bind:userId={data.userId}/>
+        {/if}
+       
     </div>
     <div class="columns">
         <Input bind:value={ data.street } label="Calle" icon="tag" placeholder="Ingrese la calle"/>

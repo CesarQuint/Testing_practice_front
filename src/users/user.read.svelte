@@ -21,12 +21,8 @@
                 <th>Telefono</th>
                 <td>{ $UserStore.phone }</td>
             </tr>
-            {#if $UserStore.homeId}
-                <tr>
-                    <th>Casa</th>
-                    <td>Aqui ira la casa</td>
-                </tr>
-            {/if}
+                <td>Casa</td>
+                <td> {$UserStore.home ? 'Casa en calle: '+ $UserStore.home.street +' Numero Ext: '+ $UserStore.home.extnumber : 'Casa no asignada'}</td>
             <tr>
                 <th>Fecha de registro</th>
                 <td>{ Utils.dateTimeLarge($UserStore.created) }</td>

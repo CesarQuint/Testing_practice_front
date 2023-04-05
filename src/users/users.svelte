@@ -54,10 +54,7 @@
                 <td>{ user.phone}</td>
                 {#if user.homeId}
                 <td> <i class="fas fa-home"></i>
-                    {#if user.homeId.street}
-                        Casa en ..
-                    {/if}
-                    Incompleta
+                    { user.home.extnumber ? 'Casa numero: ' + user.home.extnumber : 'Casa no Asignada' }
                 </td>    
                 {/if}
                 <td>{ Utils.dateLarge(user.created) }</td>
