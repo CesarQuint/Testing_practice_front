@@ -13,6 +13,8 @@
     import UserUpdate from '../users/user.update.svelte'
     import UserDelete from '../users/user.delete.svelte'
 
+    import HomeUserRead from '../homes/home.user.read.svelte'
+
     export let currentRoute = null
 
 </script>
@@ -30,7 +32,13 @@
             {value: 'editPassword', text: 'Editar Contaseña', click: () => UserStore.modalOpen('UpdatePassword')}
         ]} />
     </div>
-    <UserRead />
+    <UserRead>
+        <div slot="home">
+
+        </div>
+    </UserRead>
+    <hr>
+    <HomeUserRead />
 </Modal>
 
 <Modal id="UserCreate" title="Crear" >

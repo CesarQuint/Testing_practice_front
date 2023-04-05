@@ -8,7 +8,7 @@
     import Input from '../$components/input.svelte'
     import Form from '../$components/form.svelte'
 
-    import UserSelect from '../users/user.select.svelte'
+    import HomeSelect from '../homes/home.select.svelte'
 
     const dispatch = createEventDispatcher()
 
@@ -34,7 +34,7 @@
 
 <Form on:submit={ createPayment } on:canceled { loading } >
     <div class="columns">
-        <UserSelect bind:userId={ data.userId } />
+        <HomeSelect/>
     </div>
     <div class="columns">
         <Input bind:value={ data.name } label="Nombre" icon="tag" placeholder="Ingrese el nombre" />

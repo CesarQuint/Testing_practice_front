@@ -13,7 +13,9 @@
     export let column = true
 
     let loading = false
-    let query = {}
+    let query = {
+        all : true
+    }
     let show = false
 
     async function getHomes() {
@@ -26,6 +28,7 @@
             return ToastStore.error(response.error)
 
         HomesStore.set(response.data.homes)
+        console.log($HomesStore);
         show = !!response.data.homes.length
     }
 
@@ -44,7 +47,7 @@
         const home = event.detail
 
         homeId = home._id
-        query.find = home.name
+        query.find = home.address
 
         dispatch('select', home)
     }
@@ -57,9 +60,9 @@
     bind:value={ homeId }
     bind:text={ query.find }
     bind:show
-    label="Usuario"
-    placeholder="Buscar usuario"
+    label="Casa"
+    placeholder="Buscar casa"
     items={ $HomesStore }
-    prop="name"
+    prop="address"
     { column }
 />

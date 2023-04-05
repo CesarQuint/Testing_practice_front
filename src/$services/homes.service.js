@@ -5,6 +5,7 @@ export default {
     getHomes,
     getHomeUser,
     getHome,
+    updateHomeUser,
     updateHome,
     deleteHome,
 }
@@ -43,6 +44,14 @@ function updateHome(homeId, data) {
     return API({
         method: 'put',
         route: `/homes/${ homeId }`,
+        data
+    })
+}
+
+function updateHomeUser(homeId, data) {
+    return API({
+        method: 'put',
+        route: `/homes/${ homeId }/user`,
         data
     })
 }

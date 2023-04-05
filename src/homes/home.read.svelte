@@ -10,8 +10,8 @@
     <table class="table is-fullwidth">
         <tbody>
             <tr>
-                <th>Usuario</th>
                 {#if $HomeStore.user }
+                    <th>Usuario</th>
                     <td>{ $HomeStore.user.name }</td>
                 {/if}
                 

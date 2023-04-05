@@ -23,30 +23,18 @@
         section: $HomeStore.section,
     }
     
-    function removeHomeId(){
-       $HomeStore.userId = ''
-       data = {
-        ...data,
-        userId:$HomeStore.userId
-       }
-    }
 
     async function updateHome() {
 
         loading = false
         const response = await HomesService.updateHome($HomeStore._id, data)
-        const usuario = await UserService.updateUser($HomeStore.user._id,{homeId:$HomeStore._id})
-        console.log(usuario,response);
         loading = true
 
         if(response.error){
             loading = false
             return ToastStore.error(response.error)
         }
-        if(usuario.error){
-            loading = false
-            return ToastStore.error(usuario.error)
-        }
+        
         HomeStore.set(response.data)
         HomesStore.replace(response.data)
 
@@ -58,19 +46,6 @@
 </script>
 
 <Form on:submit={ updateHome } on:canceled { loading } >
-    <div class="columns">
-        <div class="column">
-            {#if $HomeStore.userId}
-                <Tag bind:value={data.userId} text={$HomeStore.user.name} color='primary'  isLight isDelete size='large' on:click={removeHomeId}/>
-            {/if}
-            {#if !$HomeStore.userId}
-                <div class="columns">
-                    <SelectUser bind:userId={data.userId}/>
-                </div>
-            {/if}
-        </div>
-    </div>
-    
 
     <div class="columns">
         <Input bind:value={ data.street } label="Calle" icon="tag" placeholder="Ingrese nombre" />
