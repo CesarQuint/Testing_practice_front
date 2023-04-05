@@ -27,7 +27,6 @@
 
 <style>
     section.modal-card-body{
-        min-height: 20rem;
         max-height: 26rem;
         overflow-y: auto;
     }

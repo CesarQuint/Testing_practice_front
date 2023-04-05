@@ -10,16 +10,31 @@
     <table class="table is-fullwidth">
         <tbody>
             <tr>
-                <th>Nombre</th>
-                <td>{ $HomeStore.name }</td>
+                <th>Usuario</th>
+                {#if $HomeStore.user }
+                    <td>{ $HomeStore.user.name }</td>
+                {/if}
+                
             </tr>
             <tr>
-                <th>Descripción</th>
-                <td>{ $HomeStore.description }</td>
+                <th>Calle</th>
+                <td>{ $HomeStore.street }</td>
             </tr>
             <tr>
-                <th>Fecha de registro</th>
-                <td>{ Utils.dateTimeLarge($HomeStore.created) }</td>
+                <th>Numero Exterior</th>
+                <td>{ $HomeStore.extnumber }</td>
+            </tr>
+            <tr>
+                <th>Numero Interior</th>
+                <td>{ $HomeStore.intnumber }</td>
+            </tr>
+            <tr>
+                <th>Colonia</th>
+                <td>{ $HomeStore.colony }</td>
+            </tr>
+            <tr>
+                <th>Seccion</th>
+                <td>{ $HomeStore.section }</td>
             </tr>
         </tbody>
     </table>

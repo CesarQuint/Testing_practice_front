@@ -2,12 +2,14 @@
 
     import { createEventDispatcher } from 'svelte'
     import { HomeStore, HomesStore, ToastStore } from '../stores'
+    import UserService from '../$services/users.service'
 
     import HomesService from '../$services/homes.service'
     import SelectUser from '../users/user.select.svelte'
 
     import Input from '../$components/input.svelte'
     import Form from '../$components/form.svelte'
+    import Tag from '../$components/tag.svelte' 
 
     const dispatch = createEventDispatcher()
 
@@ -20,18 +22,31 @@
         colony: $HomeStore.colony,
         section: $HomeStore.section,
     }
-
-    let nameUser = $HomeStore.user.name
+    
+    function removeHomeId(){
+       $HomeStore.userId = ''
+       data = {
+        ...data,
+        userId:$HomeStore.userId
+       }
+    }
 
     async function updateHome() {
 
         loading = false
         const response = await HomesService.updateHome($HomeStore._id, data)
+        const usuario = await UserService.updateUser($HomeStore.user._id,{homeId:$HomeStore._id})
+        console.log(usuario,response);
         loading = true
 
-        if(response.error)
+        if(response.error){
+            loading = false
             return ToastStore.error(response.error)
-
+        }
+        if(usuario.error){
+            loading = false
+            return ToastStore.error(usuario.error)
+        }
         HomeStore.set(response.data)
         HomesStore.replace(response.data)
 
@@ -39,17 +54,23 @@
         dispatch('updated')
     }
 
+
 </script>
 
 <Form on:submit={ updateHome } on:canceled { loading } >
-    {#if $HomeStore.userId}
-        <h1>{$HomeStore.user.name}</h1>
-    {/if}
-    {#if !$HomeStore.userId}
-        <div class="columns">
-            <SelectUser/>
+    <div class="columns">
+        <div class="column">
+            {#if $HomeStore.userId}
+                <Tag bind:value={data.userId} text={$HomeStore.user.name} color='primary' isLight isDelete size='large' on:click={removeHomeId}/>
+            {/if}
+            {#if !$HomeStore.userId}
+                <div class="columns">
+                    <SelectUser bind:userId={data.userId}/>
+                </div>
+            {/if}
         </div>
-    {/if}
+    </div>
+    
 
     <div class="columns">
         <Input bind:value={ data.street } label="Calle" icon="tag" placeholder="Ingrese nombre" />
