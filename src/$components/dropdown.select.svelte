@@ -40,7 +40,7 @@
                 <label for="" class="label">{ label }</label>
                 <div class="control has-icons-left">
                     <span class="icon"><i class="fas fa-search"></i></span>
-                    <input on:keyup on:blur={ onBlur } bind:value={ text } type="text" class="input" { placeholder } >
+                    <input on:keyup|preventDefault on:blur={ onBlur } bind:value={ text } type="text" class="input" { placeholder } >
                 </div>
             </div>
         </div>

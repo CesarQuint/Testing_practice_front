@@ -61,7 +61,7 @@
     <div class="columns">
         <div class="column">
             {#if $HomeStore.userId}
-                <Tag bind:value={data.userId} text={$HomeStore.user.name} color='primary' isLight isDelete size='large' on:click={removeHomeId}/>
+                <Tag bind:value={data.userId} text={$HomeStore.user.name} color='primary'  isLight isDelete size='large' on:click={removeHomeId}/>
             {/if}
             {#if !$HomeStore.userId}
                 <div class="columns">

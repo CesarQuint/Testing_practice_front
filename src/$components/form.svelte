@@ -10,7 +10,7 @@
 
 </script>
 
-<form on:submit|preventDefault >
+<form on:submit|preventDefault on:keyup|preventDefault >
     
     <slot></slot>
 

@@ -26,13 +26,13 @@
         <p class="control" class:has-icons-left={ icon } class:is-loading={ loading }>
 
             {#if type === 'text'}
-                <input type="text" bind:value on:keyup on:focus class="input is-{ color } is-{ size }" { placeholder } { disabled } { readonly } />
+                <input type="text" bind:value on:keyup|preventDefault on:focus class="input is-{ color } is-{ size }" { placeholder } { disabled } { readonly } />
             {/if}
             {#if type === 'number'}
-                <input type="number" bind:value on:keyup on:focus class="input is-{ color } is-{ size }" { placeholder } { disabled } { readonly } />
+                <input type="number" bind:value on:keyup|preventDefault on:focus class="input is-{ color } is-{ size }" { placeholder } { disabled } { readonly } />
             {/if}
             {#if type === 'password'}
-                <input type="password" bind:value on:keyup on:focus class="input is-{ color } is-{ size }" { placeholder } { disabled } { readonly } />
+                <input type="password" bind:value on:keyup|preventDefault on:focus class="input is-{ color } is-{ size }" { placeholder } { disabled } { readonly } />
             {/if}
 
             {#if icon}

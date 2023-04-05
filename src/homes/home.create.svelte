@@ -18,6 +18,7 @@
 
     async function createHome() {
 
+        console.log(data);
         loading = true
         const response = await HomeService.createHome(data)
         loading = false
@@ -36,13 +37,7 @@
 <Form on:submit={ createHome } on:canceled { loading } >
 
     <div class="columns">
-        <div class="column">
-            <Button on:click={ ()=>{show = !show} } text={ !show ? "Agregar Usuario" :"No Agregar Usuario" } light color='primary'/>
-        </div>
-        {#if show}
             <UserSelect bind:userId={data.userId}/>
-        {/if}
-       
     </div>
     <div class="columns">
         <Input bind:value={ data.street } label="Calle" icon="tag" placeholder="Ingrese la calle"/>

@@ -13,32 +13,28 @@ import HomesView from './$views/homes.view.svelte'
 const routes = [
     {
         name: '/',
-        component: IndexView
-    },
-    {
-        name: 'login',
-        component: LoginView,
+        component: IndexView,
         onlyIf: {guard: () => !isLogin(), redirect: 'home'}
     },
     {
         name: 'home',
         component: HomeView,
-        onlyIf: {guard: isLogin, redirect: 'login'}
+        onlyIf: {guard: isLogin, redirect: '/'}
     },
     {
         name: 'users',
         component: UsersView,
-        onlyIf: {guard: isLogin, redirect: 'login'}
+        onlyIf: {guard: isLogin, redirect: '/'}
     },
     {
         name:'payments',
         component :PaymentsView,
-        onlyIf:{guard:isLogin,redirect:'login'}
+        onlyIf:{guard:isLogin,redirect:'/'}
     },
     {
         name:'homes',
         component :HomesView,
-        onlyIf:{guard:isLogin,redirect:'login'}
+        onlyIf:{guard:isLogin,redirect:'/'}
     },
     {
         name: '404',

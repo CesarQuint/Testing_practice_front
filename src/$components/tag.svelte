@@ -20,6 +20,6 @@
     >
     {text}
     {#if isDelete}
-        <button on:click|preventDefault class="delete"></button>
+        <button on:click|preventDefault on:keyup|preventDefault class="delete"></button>
     {/if}
 </span>

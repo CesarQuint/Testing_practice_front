@@ -3,6 +3,7 @@ import API from './$api'
 export default {
     createHome,
     getHomes,
+    getHomeUser,
     getHome,
     updateHome,
     deleteHome,
@@ -28,6 +29,13 @@ function getHome(homeId) {
     return API({
         method: 'get',
         route: `/homes/${ homeId }`,
+    })
+}
+
+function getHomeUser(userId) {
+    return API({
+        method: 'get',
+        route: `/homes/${ userId }`,
     })
 }
 

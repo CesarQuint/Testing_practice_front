@@ -52,11 +52,11 @@
                 <td>{ user.name }</td>
                 <td>{ user.email }</td>
                 <td>{ user.phone}</td>
-                {#if user.homeId}
+                
                 <td> <i class="fas fa-home"></i>
-                    { user.home.extnumber ? 'Casa numero: ' + user.home.extnumber : 'Casa no Asignada' }
+                        { user.homeId ? 'Casa Asignada': 'Casa no Asignada' }
                 </td>    
-                {/if}
+                
                 <td>{ Utils.dateLarge(user.created) }</td>
             </tr>
         {/each}
