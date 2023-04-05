@@ -25,6 +25,14 @@
 
 </script>
 
+<style>
+    section.modal-card-body{
+        min-height: 20rem;
+        max-height: 26rem;
+        overflow-y: auto;
+    }
+</style>
+
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 
 {#if show}

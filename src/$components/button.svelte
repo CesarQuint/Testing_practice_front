@@ -7,10 +7,12 @@
     export let iconType = 'fa'
     export let color = null
     export let size = null
+    export let light = null
 
     export let fullwidth = false
     export let outlined = false
     export let loading = false
+    export let disabled = false
 
 </script>
 
@@ -21,6 +23,8 @@
     class:is-outlined={ outlined }
     class:is-fullwidth={ fullwidth }
     class:is-loading={ loading }
+    class:is-light={light}
+    disabled={disabled}
 >
     {#if icon}
         <span class="icon"><i class="{ iconType } fa-{ icon }"></i></span>

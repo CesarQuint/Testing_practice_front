@@ -13,12 +13,15 @@
 
     let loading = false
     let data = {
+        userId: $HomeStore.userId,
         street: $HomeStore.street,
         extnumber: $HomeStore.extnumber,
         intnumber: $HomeStore.intnumber,
         colony: $HomeStore.colony,
         section: $HomeStore.section,
     }
+
+    let nameUser = $HomeStore.user.name
 
     async function updateHome() {
 
@@ -39,9 +42,15 @@
 </script>
 
 <Form on:submit={ updateHome } on:canceled { loading } >
-    <div class="columns">
-        <SelectUser/>
-    </div>
+    {#if $HomeStore.userId}
+        <h1>{$HomeStore.user.name}</h1>
+    {/if}
+    {#if !$HomeStore.userId}
+        <div class="columns">
+            <SelectUser/>
+        </div>
+    {/if}
+
     <div class="columns">
         <Input bind:value={ data.street } label="Calle" icon="tag" placeholder="Ingrese nombre" />
     </div>

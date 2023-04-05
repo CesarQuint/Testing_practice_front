@@ -11,6 +11,7 @@
 
     export let userId = null
     export let column = true
+    export let user = {}
 
     let loading = false
     let query = {}

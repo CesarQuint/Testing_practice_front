@@ -7,10 +7,12 @@
 
     import Input from '../$components/input.svelte'
     import Form from '../$components/form.svelte'
+    import Button from '../$components/button.svelte'
 
     const dispatch = createEventDispatcher()
 
     let loading = false
+    let show = false
     let data = {}
 
     async function createUser() {
@@ -43,4 +45,15 @@
     <div class="columns">
         <Input bind:value={ data.password } label="Contraseña" icon="lock" placeholder="Ingrese la contraseña" />
     </div>
+
+    <div class="columns">
+        <div class="column">
+            <Button disabled={show} on:click={()=>{show = !show}} text="Agregar mas Informacion de la casa" light color='primary'/>
+
+            {#if show}
+                <h2>Mas informacion</h2>
+            {/if}
+        </div>
+    </div>
+
 </Form>

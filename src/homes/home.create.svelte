@@ -37,9 +37,18 @@
         <UserSelect bind:userId={data.userId}/>
     </div>
     <div class="columns">
-        <Input bind:value={ data.name } label="Nombre" icon="tag" placeholder="Ingrese nombre" />
+        <Input bind:value={ data.street } label="Calle" icon="tag" placeholder="Ingrese la calle"/>
     </div>
     <div class="columns">
-        <Input bind:value={ data.description } label="Descripción" icon="tag" placeholder="Ingrese descripción" />
+        <Input bind:value={ data.extnumber } label="Numero Exterior" icon="hashtag" placeholder="Numero Exterior" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.intnumber } label="Numero Interior" icon="hashtag" placeholder="Numero Interior" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.colony } label="Colonia" icon="tag" placeholder="Colonia" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.section } label="Seccion" icon="tag" placeholder="Seccion" />
     </div>
 </Form>
