@@ -15,7 +15,6 @@
 
     let loading = false
     let data = {
-        userId: $HomeStore.userId,
         street: $HomeStore.street,
         extnumber: $HomeStore.extnumber,
         intnumber: $HomeStore.intnumber,

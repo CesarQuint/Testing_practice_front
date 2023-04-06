@@ -42,7 +42,6 @@
         <th>Nombre</th>
         <th>Correo</th>
         <th>Telefono</th>
-        <th>Casa</th>
         <th>Fecha de Registro</th>
     </thead>
     <tbody>
@@ -52,11 +51,6 @@
                 <td>{ user.name }</td>
                 <td>{ user.email }</td>
                 <td>{ user.phone}</td>
-                
-                <td> <i class="fas fa-home"></i>
-                        { user.homeId ? 'Casa Asignada': 'Casa no Asignada' }
-                </td>    
-                
                 <td>{ Utils.dateLarge(user.created) }</td>
             </tr>
         {/each}

@@ -37,8 +37,6 @@
 
         </div>
     </UserRead>
-    <hr>
-    <HomeUserRead />
 </Modal>
 
 <Modal id="UserCreate" title="Crear" >

@@ -29,17 +29,17 @@
     async function updateHomeUser() {
 
         loading = false
-        const response = await HomesService.updateHomeUser($HomeStore._id, data)
+        const response = await HomesService.updateHome($HomeStore._id, data)
         loading = true
 
-        if(response.error)
+        if(response.error){
+            loading = false
             return ToastStore.error(response.error)
-        
+        }
+
         HomeStore.set(response.data)
         HomesStore.replace(response.data)
-
-        await getHome()
-
+        
         ToastStore.success('Actualizado')
         dispatch('updated')
     }

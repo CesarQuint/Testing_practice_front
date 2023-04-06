@@ -3,9 +3,7 @@ import API from './$api'
 export default {
     createHome,
     getHomes,
-    getHomeUser,
     getHome,
-    updateHomeUser,
     updateHome,
     deleteHome,
 }
@@ -33,25 +31,10 @@ function getHome(homeId) {
     })
 }
 
-function getHomeUser(userId) {
-    return API({
-        method: 'get',
-        route: `/homes/${ userId }`,
-    })
-}
-
 function updateHome(homeId, data) {
     return API({
         method: 'put',
         route: `/homes/${ homeId }`,
-        data
-    })
-}
-
-function updateHomeUser(homeId, data) {
-    return API({
-        method: 'put',
-        route: `/homes/${ homeId }/user`,
         data
     })
 }
