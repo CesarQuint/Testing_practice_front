@@ -27,6 +27,8 @@
 
         PaymentsStore.set(response.data.payments)
         metadata = response.data.metadata
+
+        console.log($PaymentsStore);
     }
 
 </script>
@@ -38,18 +40,17 @@
 <Table bind:query items={ $PaymentsStore.length } on:change={ getPayments } { metadata } { loading }>
     <thead>
         <th>#</th>
-        <th>Creador</th>
-        <th>Nombre</th>
+        <th>Casa</th>
+        <th>Concepto</th>
         <th>Cantidad</th>
+        <th>Estatus</th>
         <th>Fecha de Creacion</th>
     </thead>
     <tbody>
         {#each $PaymentsStore as payment, index}
             <tr on:click={() => PaymentStore.modalRead(payment)}>
                 <td>{ (index+1) + ( metadata.page * metadata.limit ) }</td>
-                <td>{ payment.user.name }</td>
-                <td>{ payment.name }</td>
-                <td>{ Utils.cash(payment.amount) }</td>
+                <td>{String(payment.home.address).substring(0,30) + "..."}</td>
                 <td>{ Utils.dateLarge(payment.created) }</td>
             </tr>
         {/each}

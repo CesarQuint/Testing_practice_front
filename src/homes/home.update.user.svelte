@@ -39,26 +39,31 @@
 
         HomeStore.set(response.data)
         HomesStore.replace(response.data)
-        
+
+        await getHome()
+
         ToastStore.success('Actualizado')
         dispatch('updated')
     }
 
     async function getHome() {
 
-        const home = $HomesStore.find(home => home.userId === $HomeStore.userId)
+        const home = $HomesStore.find(home => home.userId === $HomeStore.userId )
+        console.log($HomesStore);
 
         if(!home)
             return
 
         loading = true
         const response = await HomesService.getHome(home._id)
+        console.log(response);
         loading = false
 
         if(response.error)
             return ToastStore.error(response.error)
 
-        $HomesStore.replace(response.data)
+        HomesStore.replace(response.data)
+
     }
 
 

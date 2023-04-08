@@ -34,12 +34,18 @@
 
 <Form on:submit={ createPayment } on:canceled { loading } >
     <div class="columns">
-        <HomeSelect/>
+        <HomeSelect bind:homeId={data.homeId}/>
     </div>
     <div class="columns">
-        <Input bind:value={ data.name } label="Nombre" icon="tag" placeholder="Ingrese el nombre" />
+        <Input bind:value={ data.concept } label="Concepto de Pago" icon="tag" placeholder="Concepto..." />
     </div>
     <div class="columns">
-        <Input bind:value={ data.amount } label="Cantidad" icon="dollar-sign" placeholder="Ingrese el correo" type="number" />
+        <Input bind:value={ data.reference } label="Referencia de pago" icon="tag" placeholder="Pago" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.paymentphoto } label="Cargar Fotografia" icon="tag" placeholder="Fotografia de pago" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.amount } label="Cantidad" icon="dollar-sign" placeholder="Ingrese la cantidad" type="number" />
     </div>
 </Form>
