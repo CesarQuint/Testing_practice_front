@@ -51,6 +51,9 @@
             <tr on:click={() => PaymentStore.modalRead(payment)}>
                 <td>{ (index+1) + ( metadata.page * metadata.limit ) }</td>
                 <td>{String(payment.home.address).substring(0,30) + "..."}</td>
+                <td>{payment.concept}</td>
+                <td>{Utils.cash(payment.amount)}</td>
+                <td>{payment.status}</td>
                 <td>{ Utils.dateLarge(payment.created) }</td>
             </tr>
         {/each}

@@ -7,18 +7,24 @@
 
     import Form from '../$components/form.svelte'
     import Input from '../$components/input.svelte'
+    import Dropdown from '../$components/dropdown.svelte'
 
     const dispatch = createEventDispatcher()
 
     let loading = false
     let data = {
-        name: $PaymentStore.name,
+        homeId: $PaymentStore.homeId,
+        concept: $PaymentStore.concept,
+        reference: $PaymentStore.reference,
+        paymentphoto: $PaymentStore.paymentphoto,
         amount: $PaymentStore.amount,
+        status:$PaymentStore.status
     }
 
     async function updatePayment() {
 
         loading = false
+        console.log(data);
         const response = await PaymentsService.updatePayment($PaymentStore._id, data)
         loading = true
 
@@ -36,9 +42,15 @@
 
 <Form on:submit={ updatePayment } on:canceled { loading } >
     <div class="columns">
-        <Input bind:value={ data.name } label="Nombre" icon="tag" placeholder="Ingrese el nombre" />
+        <Input bind:value={ data.concept } label="Concepto" icon="tag" placeholder="Ingrese el concepto" />
     </div>
     <div class="columns">
-        <Input bind:value={ data.amount } label="Correo" icon="dollar-sign" placeholder="Ingrese el correo" type="number" />
+        <Input bind:value={ data.reference } label="Referencia" icon="tag" placeholder="Ingrese la referencia" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.paymentphoto } label="Foto de Pago" icon="tag" placeholder="Ingrese la foto" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.amount } label="Cantidad" icon="dollar-sign" placeholder="Ingrese la referencia" type="number" />
     </div>
 </Form>
