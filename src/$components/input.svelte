@@ -35,6 +35,10 @@
                 <input type="password" bind:value on:keyup|preventDefault on:focus class="input is-{ color } is-{ size }" { placeholder } { disabled } { readonly } />
             {/if}
 
+            {#if type === 'date'}
+                <input type="date" bind:value on:keyup|preventDefault on:focus class="input is-{ color } is-{ size }" { placeholder } { disabled } { readonly } />
+            {/if}
+
             {#if icon}
                 <span class="icon is-left"><i class="fas fa-{ icon }" /></span>
             {/if}

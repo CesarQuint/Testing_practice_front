@@ -1,9 +1,9 @@
 <script>
 
-    import { createEventDispatcher } from 'svelte'
-    import { MaintenanceStore, MaintenancesStore, ToastStore } from '../stores'
+    import { createEventDispatcher, onMount } from 'svelte'
+    import { TicketStore, TicketsStore, ToastStore } from '../stores'
 
-    import MaintenancesService from '../$services/maintenances.service'
+    import TicketsService from '../$services/tickets.service'
 
     import Input from '../$components/input.svelte'
     import Form from '../$components/form.svelte'
@@ -12,22 +12,25 @@
 
     let loading = false
     let data = {
-        name: $MaintenanceStore.name,
-        description: $MaintenanceStore.description,
-        amount: $MaintenanceStore.amount,
+        concept: $TicketStore.concept,
+        type: $TicketStore.type,
+        amount: $TicketStore.amount,
+        limited: $TicketStore.limited
     }
 
-    async function updateMaintenance() {
+    onMount(()=>{console.log($TicketStore);})
+
+    async function updateTicket() {
 
         loading = false
-        const response = await MaintenancesService.updateMaintenance($MaintenanceStore._id, data)
+        const response = await TicketsService.updateTicket($TicketStore._id, data)
         loading = true
 
         if(response.error)
             return ToastStore.error(response.error)
 
-        MaintenanceStore.set(response.data)
-        MaintenancesStore.replace(response.data)
+        TicketStore.set(response.data)
+        TicketsStore.replace(response.data)
 
         ToastStore.success('Actualizado')
         dispatch('updated')
@@ -35,14 +38,17 @@
 
 </script>
 
-<Form on:submit={ updateMaintenance } on:canceled { loading } >
+<Form on:submit={ updateTicket } on:canceled { loading } >
     <div class="columns">
-        <Input bind:value={ data.name } label="Nombre" icon="tag" placeholder="Ingrese nombre" />
+        <Input bind:value={ data.concept } label="Concepto" icon="tag" placeholder="Ingrese Concepto" />
     </div>
     <div class="columns">
-        <Input bind:value={ data.description } label="Descripción" icon="tag" placeholder="Ingrese descripción" />
+        <Input bind:value={ data.type } label="Tipo" icon="tag" placeholder="Ingrese Tipo" />
     </div>
     <div class="columns">
-        <Input bind:value={ data.amount } label="Monto" icon="dollar-sign" placeholder="Ingrese monto" />
+        <Input bind:value={ data.amount } label="Cantidad" icon="dollar-sign" placeholder="Ingrese monto" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.limited } label="Fecha Limite" icon="tag" placeholder="Ingrese fecha limite" type="date"/>
     </div>
 </Form>

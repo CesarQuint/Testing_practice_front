@@ -52,9 +52,6 @@
 
 <Form on:submit={ createNotification } on:canceled { loading } >
     <div class="columns">
-        <UserSelect bind:userId={data.userId}/>
-    </div>
-    <div class="columns">
         <Input bind:value={ data.title } label="Titulo" icon="tag" placeholder="Titulo de la notificacion" />
     </div>
     <div class="columns">

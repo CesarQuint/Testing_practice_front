@@ -1,6 +1,6 @@
 <script>
 
-    import { MaintenanceStore } from '../stores'
+    import { TicketStore } from '../stores'
 
     import Utils from '../utils'
 
@@ -10,20 +10,24 @@
     <table class="table is-fullwidth">
         <tbody>
             <tr>
-                <th>Nombre</th>
-                <td>{ $MaintenanceStore.name }</td>
+                <th>Concepto</th>
+                <td>{$TicketStore.concept}</td>
             </tr>
             <tr>
-                <th>Descripción</th>
-                <td>{ $MaintenanceStore.description }</td>
+                <th>Tipo</th>
+                <td>{$TicketStore.type}</td>
             </tr>
             <tr>
-                <th>Monto</th>
-                <td>{ $MaintenanceStore.amount }</td>
+                <th>Cantidad</th>
+                <td>{$TicketStore.amount}</td>
             </tr>
             <tr>
-                <th>Fecha de registro</th>
-                <td>{ Utils.dateTimeLarge($MaintenanceStore.created) }</td>
+                <th>Fecha de Creacion</th>
+                <td>{Utils.dateLarge($TicketStore.created)}</td>
+            </tr>
+            <tr>
+                <th>Fecha Limite</th>
+                <td>{Utils.dateLarge($TicketStore.limited)}</td>     
             </tr>
         </tbody>
     </table>

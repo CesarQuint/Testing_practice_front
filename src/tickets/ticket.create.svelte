@@ -1,9 +1,10 @@
 <script>
 
     import { createEventDispatcher } from 'svelte'
-    import { MaintenancesStore, ToastStore } from '../stores'
+    import { TicketsStore, ToastStore } from '../stores'
 
-    import MaintenanceService from '../$services/maintenances.service'
+    import TicketService from '../$services/tickets.service'
+    import HomesService from '../$services/homes.service'
 
     import Input from '../$components/input.svelte'
     import Form from '../$components/form.svelte'
@@ -13,16 +14,17 @@
     let loading = false
     let data = {}
 
-    async function createMaintenance() {
+    async function createTicket() {
+
 
         loading = true
-        const response = await MaintenanceService.createMaintenance(data)
+        const response = await TicketService.createTicket(data)
         loading = false
 
         if(response.error)
             return ToastStore.error(response.error)
 
-        MaintenancesStore.append(response.data)
+        TicketsStore.append(response.data)
 
         ToastStore.success('Creado')
         dispatch('created')
@@ -30,14 +32,17 @@
 
 </script>
 
-<Form on:submit={ createMaintenance } on:canceled { loading } >
+<Form on:submit={ createTicket } on:canceled { loading } >
     <div class="columns">
-        <Input bind:value={ data.name } label="Nombre" icon="tag" placeholder="Ingrese nombre" />
+        <Input bind:value={ data.concept } label="Concepto" icon="tag" placeholder="Ingrese el concepto" />
     </div>
     <div class="columns">
-        <Input bind:value={ data.description } label="Descripción" icon="tag" placeholder="Ingrese descripción" />
+        <Input bind:value={ data.type } label="Tipo" icon="tag" placeholder="Ingrese el tipo" />
     </div>
     <div class="columns">
-        <Input bind:value={ data.amount } label="Monto" icon="dollar-sign" placeholder="Ingrese monto" />
+        <Input bind:value={ data.amount } label="Monto" icon="dollar-sign" placeholder="Ingrese monto" type="number"/>
+    </div>
+    <div class="columns">
+       <Input type="date" bind:value={data.limited}/>
     </div>
 </Form>

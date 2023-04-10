@@ -16,7 +16,6 @@
         title: $NotificationStore.title,
         description: $NotificationStore.description,
         relevance: $NotificationStore.relevance,
-        userId: $NotificationStore.userId
     }
     
 
@@ -59,10 +58,6 @@
 </style>
 
 <Form on:submit={ updateNotification } on:canceled { loading } >
-
-    <div class="columns">
-        <SelectUser bind:userId={ data.userId }/>
-    </div>
     <div class="columns">
         <Input bind:value={ data.title } label="Titulo" icon="tag" placeholder="Ingrese titulo" />
     </div>

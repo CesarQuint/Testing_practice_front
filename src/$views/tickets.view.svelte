@@ -6,7 +6,7 @@
     import Modal from '../$components/modal.svelte'
     import Dropdown from '../$components/dropdown.svelte'
 
-    import Tickets from '../tickets/ticket.svelte'
+    import Tickets from '../tickets/tickets.svelte'
     import TicketRead from '../tickets/ticket.read.svelte'
     import TicketCreate from '../tickets/ticket.create.svelte'
     import TicketUpdate from '../tickets/ticket.update.svelte'
