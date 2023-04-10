@@ -47,18 +47,7 @@
 <Form on:submit={ updateHome } on:canceled { loading } >
 
     <div class="columns">
-        <Input bind:value={ data.street } label="Calle" icon="tag" placeholder="Ingrese nombre" />
+        <Input bind:value={ data.title } label="titulo" icon="tag" placeholder="Ingrese nombre" />
     </div>
-    <div class="columns">
-        <Input bind:value={ data.extnumber } label="Numero Exterior" icon="tag" placeholder="Ingrese descripción" />
-    </div>
-    <div class="columns">
-        <Input bind:value={ data.intnumber } label="Numero Interior" icon="tag" placeholder="Ingrese nombre" />
-    </div>
-    <div class="columns">
-        <Input bind:value={ data.colony } label="Colonia" icon="tag" placeholder="Ingrese descripción" />
-    </div>
-    <div class="columns">
-        <Input bind:value={ data.section } label="Seccion" icon="tag" placeholder="Ingrese descripción" />
-    </div>
+
 </Form>

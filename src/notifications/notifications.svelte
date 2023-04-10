@@ -9,6 +9,8 @@
     import Table from '../$components/table.svelte'
     import Search from '../$components/search.svelte'
     import Button from '../$components/button.svelte'
+    import NotificationComp from '../$components/notification.svelte'
+  import Notification from './notification.update.svelte';
 
     let loading = false
     let query = { all: true }
@@ -32,6 +34,12 @@
 
 </script>
 
+<style>
+    .title{
+        margin-bottom: 0.2rem !important;
+    }
+</style>
+
 <Search on:enter={ getNotifications } bind:value={ query.find } >
     <Button on:click={() => NotificationStore.modalCreate()} text="Agregar" icon="plus" color="primary" />
 </Search>
@@ -39,14 +47,21 @@
 <Table bind:query items={ $NotificationsStore.length } on:change={ getNotifications } { metadata } { loading }>
     <thead>
         <th>#</th>
-        <th>Dueño</th>
-        <th>Direccion</th>
-        <th>Fecha de creacion</th>
+        <th>Notificacion</th>
     </thead>
     <tbody>
         {#each $NotificationsStore as Notification, index}
             <tr on:click={() => NotificationStore.modalRead(Notification)}>
                 <td>{ (index+1) + ( metadata.page * metadata.limit ) }</td>
+                <td>
+                    <NotificationComp 
+                    color={Notification.relevance == 'high'?'danger':Notification.relevance == 'medium' ?'warning':'success'}>
+                    <h1 class="title is-5">{Notification.user.name}</h1>
+                    <h2 class="title is-6">{Notification.title}</h2>
+                    <p>{Notification.description}</p>
+                    <p>{Utils.dateTime(Notification.created)}</p>
+                    </NotificationComp>
+                </td>
             </tr>
         {/each}
     </tbody>

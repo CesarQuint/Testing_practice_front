@@ -7,10 +7,13 @@
 
     import Input from '../$components/input.svelte'
     import Form from '../$components/form.svelte'
+    import Dropdown from '../$components/dropdown.svelte'
+
+    import UserSelect from '../users/user.select.svelte'
+  import { bind } from 'svelte/internal';
 
     const dispatch = createEventDispatcher()
 
-    let show = false
     let loading = false
     let data = {}
 
@@ -31,20 +34,37 @@
 
 </script>
 
+<style>
+
+    .column{
+            display: flex;
+            flex-flow: column wrap;
+            gap: 1rem;
+        }
+
+    @media(min-width: 768px){
+        .column{
+            display: flex;
+            flex-flow: row wrap;
+            gap: 1rem;
+        }   
+    }
+</style>
+
 <Form on:submit={ createNotification } on:canceled { loading } >
     <div class="columns">
-        <Input bind:value={ data.street } label="Calle" icon="tag" placeholder="Ingrese la calle"/>
+        <UserSelect bind:userId={data.userId}/>
     </div>
     <div class="columns">
-        <Input bind:value={ data.extnumber } label="Numero Exterior" icon="hashtag" placeholder="Numero Exterior" />
+        <Input bind:value={ data.title } label="Titulo" icon="tag" placeholder="Titulo de la notificacion" />
     </div>
     <div class="columns">
-        <Input bind:value={ data.intnumber } label="Numero Interior" icon="hashtag" placeholder="Numero Interior" />
+        <Input bind:value={ data.description } label="Descripcion" icon="tag" placeholder="Descripcion de la notificacion" />
     </div>
     <div class="columns">
-        <Input bind:value={ data.colony } label="Colonia" icon="tag" placeholder="Colonia" />
-    </div>
-    <div class="columns">
-        <Input bind:value={ data.section } label="Seccion" icon="tag" placeholder="Seccion" />
+        <div class="column">
+            <Dropdown bind:value={data.relevance} text="Relevancia" options={[{value: "high", text: "Alta"},{value: "medium", text: "Media"},{value: "low", text: "Baja"}]}/>
+            <Dropdown bind:value={data.type} text="Tipo" options={[{value: "global", text: "Global"},{value: "private", text: "Privada"}]}/>
+        </div>
     </div>
 </Form>
