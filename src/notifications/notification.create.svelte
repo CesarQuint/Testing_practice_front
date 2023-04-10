@@ -10,7 +10,6 @@
     import Dropdown from '../$components/dropdown.svelte'
 
     import UserSelect from '../users/user.select.svelte'
-  import { bind } from 'svelte/internal';
 
     const dispatch = createEventDispatcher()
 
@@ -64,7 +63,6 @@
     <div class="columns">
         <div class="column">
             <Dropdown bind:value={data.relevance} text="Relevancia" options={[{value: "high", text: "Alta"},{value: "medium", text: "Media"},{value: "low", text: "Baja"}]}/>
-            <Dropdown bind:value={data.type} text="Tipo" options={[{value: "global", text: "Global"},{value: "private", text: "Privada"}]}/>
         </div>
     </div>
 </Form>

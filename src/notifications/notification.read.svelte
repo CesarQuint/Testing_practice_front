@@ -1,6 +1,6 @@
 <script>
 
-    import { HomeStore } from '../stores'
+    import { NotificationStore } from '../stores'
 
     import Utils from '../utils'
 
@@ -10,31 +10,27 @@
     <table class="table is-fullwidth">
         <tbody>
             <tr>
-                {#if $HomeStore.user }
+                {#if $NotificationStore.user }
                     <th>Usuario</th>
-                    <td>{ $HomeStore.user.name }</td>
+                    <td>{ $NotificationStore.user.name }</td>
                 {/if}
                 
             </tr>
             <tr>
-                <th>Calle</th>
-                <td>{ $HomeStore.street }</td>
+                <th>Titulo</th>
+                <td>{ $NotificationStore.title }</td>
             </tr>
             <tr>
-                <th>Numero Exterior</th>
-                <td>{ $HomeStore.extnumber }</td>
+                <th>Descripcion</th>
+                <td>{ $NotificationStore.description }</td>
             </tr>
             <tr>
-                <th>Numero Interior</th>
-                <td>{ $HomeStore.intnumber }</td>
+                <th>Relevancia</th>
+                <td>{ $NotificationStore.relevance == 'high'?'Alta':$NotificationStore.relevance == 'medium' ? 'Media':'Baja'}</td>
             </tr>
             <tr>
-                <th>Colonia</th>
-                <td>{ $HomeStore.colony }</td>
-            </tr>
-            <tr>
-                <th>Seccion</th>
-                <td>{ $HomeStore.section }</td>
+                <th>Creada</th>
+                <td>{Utils.dateTime($NotificationStore.created)}</td>
             </tr>
         </tbody>
     </table>

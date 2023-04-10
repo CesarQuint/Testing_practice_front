@@ -21,11 +21,17 @@ export const HomeStore = Model('Home')
 
 export const HomesStore= Collection('Homes')
 
-//*Notifications Store
+//*Notifications Stores
 
 export const NotificationStore = Model('Notification')
 
 export const NotificationsStore= Collection('Notifications')
+
+//*Tickets Stores
+
+export const TicketStore = Model('Ticket')
+
+export const TicketsStore= Collection('Tickets')
 
 
 function Model(name) {

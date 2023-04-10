@@ -9,6 +9,8 @@ import IndexView from './$views/index.view.svelte'
 import UsersView from './$views/users.view.svelte'
 import PaymentsView from './$views/payments.view.svelte'
 import HomesView from './$views/homes.view.svelte'
+import NotificationsView from './$views/notifications.view.svelte'
+import TicketsView from './$views/tickets.view.svelte'
 
 const routes = [
     {
@@ -34,6 +36,16 @@ const routes = [
     {
         name:'homes',
         component :HomesView,
+        onlyIf:{guard:isLogin,redirect:'/'}
+    },
+    {
+        name:'notifications',
+        component :NotificationsView,
+        onlyIf:{guard:isLogin,redirect:'/'}
+    },
+    {
+        name:'tickets',
+        component :TicketsView,
         onlyIf:{guard:isLogin,redirect:'/'}
     },
     {

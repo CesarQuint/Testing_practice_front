@@ -72,6 +72,8 @@
                 <li on:click={() => navigateTo('users')} class:is-active={path === '/users'}><a>Usuarios</a></li>
                 <li on:click={() => navigateTo('payments')} class:is-active={path === '/payments'}><a>Pagos</a></li>
                 <li on:click={() => navigateTo('homes')} class:is-active={path === '/homes'}><a>Casas</a></li>
+                <li on:click={() => navigateTo('notifications')} class:is-active={path === '/notifications'}><a>Notificaciones</a></li>
+                <li on:click={() => navigateTo('tickets')} class:is-active={path === '/tickets'}><a>Tickets</a></li>
             </ul>
         </div>
         <div class="container is-fluid">

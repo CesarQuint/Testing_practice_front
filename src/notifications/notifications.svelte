@@ -10,7 +10,6 @@
     import Search from '../$components/search.svelte'
     import Button from '../$components/button.svelte'
     import NotificationComp from '../$components/notification.svelte'
-  import Notification from './notification.update.svelte';
 
     let loading = false
     let query = { all: true }
@@ -56,10 +55,9 @@
                 <td>
                     <NotificationComp 
                     color={Notification.relevance == 'high'?'danger':Notification.relevance == 'medium' ?'warning':'success'}>
-                    <h1 class="title is-5">{Notification.user.name}</h1>
-                    <h2 class="title is-6">{Notification.title}</h2>
+                    <h1 class="title is-5">{Notification.title}</h1>
                     <p>{Notification.description}</p>
-                    <p>{Utils.dateTime(Notification.created)}</p>
+                    <p>Creado el: {Utils.dateTime(Notification.created)}</p>
                     </NotificationComp>
                 </td>
             </tr>

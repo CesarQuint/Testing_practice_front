@@ -1,9 +1,9 @@
 <script>
 
     import { createEventDispatcher } from 'svelte'
-    import { HomeStore, HomesStore, ToastStore } from '../stores'
+    import { NotificationStore, NotificationsStore, ToastStore } from '../stores'
 
-    import HomesService from '../$services/homes.service'
+    import NotificationsService from '../$services/notifications.service'
 
     import Form from '../$components/form.svelte'
 
@@ -11,16 +11,16 @@
 
     let loading = false
 
-    async function deleteHome() {
+    async function deleteNotification() {
 
         loading = true
-        const response = await HomesService.deleteHome($HomeStore._id)
+        const response = await NotificationsService.deleteNotification($NotificationStore._id)
         loading = false
 
         if(response.error)
             return ToastStore.error(response.error)
 
-        HomesStore.remove($HomeStore._id)
+        NotificationsStore.remove($NotificationStore._id)
 
         ToastStore.success('Borrado')
         dispatch('deleted')
@@ -28,7 +28,7 @@
 
 </script>
 
-<Form on:submit={ deleteHome } on:canceled { loading } >
+<Form on:submit={ deleteNotification } on:canceled { loading } >
     <div class="columns">
         <div class="column">
             <div class="title">¿Seguro que quieres borrar el registro?</div>
