@@ -8,7 +8,7 @@
     import Notifications from '../notifications/notifications.svelte';
     import NotificationRead from '../notifications/notification.read.svelte'
     import NotificationCreate from '../notifications/notification.create.svelte'
-    import NotificationUpdate from '../notifications/notificatio.update.svelte'
+    import NotificationUpdate from '../notifications/notification.update.svelte'
     import NotificationDelete from '../notifications/notification.delete.svelte'
 
     export let currentRoute = null
