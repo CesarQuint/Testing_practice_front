@@ -1,14 +1,12 @@
 <script>
 
     import { createEventDispatcher } from 'svelte'
-    import { HomesStore, ToastStore } from '../stores'
+    import { NotificationsStore, ToastStore } from '../stores'
 
-    import HomeService from '../$services/homes.service'
+    import NotificationService from '../$services/notifications.service'
 
     import Input from '../$components/input.svelte'
     import Form from '../$components/form.svelte'
-    import Button from '../$components/button.svelte'
-    import UserSelect from '../users/user.select.svelte'
 
     const dispatch = createEventDispatcher()
 
@@ -16,17 +14,16 @@
     let loading = false
     let data = {}
 
-    async function createHome() {
+    async function createNotification() {
 
-        console.log(data);
         loading = true
-        const response = await HomeService.createHome(data)
+        const response = await NotificationService.createNotification(data)
         loading = false
 
         if(response.error)
             return ToastStore.error(response.error)
 
-        HomesStore.append(response.data)
+        NotificationsStore.append(response.data)
 
         ToastStore.success('Creado')
         dispatch('created')
@@ -34,11 +31,7 @@
 
 </script>
 
-<Form on:submit={ createHome } on:canceled { loading } >
-
-    <div class="columns">
-            <UserSelect bind:userId={data.userId}/>
-    </div>
+<Form on:submit={ createNotification } on:canceled { loading } >
     <div class="columns">
         <Input bind:value={ data.street } label="Calle" icon="tag" placeholder="Ingrese la calle"/>
     </div>

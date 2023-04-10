@@ -1,9 +1,9 @@
 <script>
 
     import { onMount } from 'svelte'
-    import { HomesStore, HomeStore, ToastStore } from '../stores'
+    import { NotificationsStore, NotificationStore, ToastStore } from '../stores'
 
-    import HomesService from '../$services/homes.service'
+    import NotificationsService from '../$services/notifications.service'
     import Utils from '../utils'
 
     import Table from '../$components/table.svelte'
@@ -14,30 +14,29 @@
     let query = { all: true }
     let metadata = {}
 
-    onMount(getHomes)
+    onMount(getNotifications)
 
-    async function getHomes() {
+    async function getNotifications() {
 
         loading = true
-        const response = await HomesService.getHomes(query)
+        const response = await NotificationsService.getNotifications(query)
         loading = false
 
         if(response.error)
             return ToastStore.error(response.error)
 
-        HomesStore.set(response.data.homes)
+        NotificationsStore.set(response.data.notifications)
         metadata = response.data.metadata
 
-        console.log($HomesStore);
     }
 
 </script>
 
-<Search on:enter={ getHomes } bind:value={ query.find } >
-    <Button on:click={() => HomeStore.modalCreate()} text="Agregar" icon="plus" color="primary" />
+<Search on:enter={ getNotifications } bind:value={ query.find } >
+    <Button on:click={() => NotificationStore.modalCreate()} text="Agregar" icon="plus" color="primary" />
 </Search>
 
-<Table bind:query items={ $HomesStore.length } on:change={ getHomes } { metadata } { loading }>
+<Table bind:query items={ $NotificationsStore.length } on:change={ getNotifications } { metadata } { loading }>
     <thead>
         <th>#</th>
         <th>Dueño</th>
@@ -45,12 +44,9 @@
         <th>Fecha de creacion</th>
     </thead>
     <tbody>
-        {#each $HomesStore as home, index}
-            <tr on:click={() => HomeStore.modalRead(home)}>
+        {#each $NotificationsStore as Notification, index}
+            <tr on:click={() => NotificationStore.modalRead(Notification)}>
                 <td>{ (index+1) + ( metadata.page * metadata.limit ) }</td>
-                <td>{ home.user ? home.user.name : 'No Asignado' }</td>
-                <td>{ 'Calle: '+ home.street + ' N.Exterior: ' + home.extnumber + ' N.Interior: ' + home.intnumber + ' Colonia: ' + home.colony + ' Seccion: ' + home.section}</td>
-                <td>{ Utils.dateTimeLarge(home.created) }</td>
             </tr>
         {/each}
     </tbody>
