@@ -7,6 +7,14 @@
 </script>
 
 <Menu path={ currentRoute.path }>
-    <h1 class="title is-4">Notificaciones</h1>
-    <h1 class="title is-4">Post</h1>
+    <div class="columns is-3">
+
+        <div class="is-two-thirds">
+            <h1 class="title is-4">Notifications</h1>
+        </div>
+        <div class="is-one-third">
+            <h1 class="title is-4">tickets</h1>
+        </div>
+
+    </div>
 </Menu>
