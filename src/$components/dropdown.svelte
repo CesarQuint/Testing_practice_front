@@ -6,6 +6,7 @@
 
     export let options = []
     export let value = null
+    export let column = false
 
     export let text = null
     export let icon = 'angle-down'
@@ -26,29 +27,32 @@
 
 </script>
 
-<div class="dropdown" class:is-active={ isActive } class:is-right={ isRight }>
-    <div class="dropdown-trigger">
-        <button on:click={() => isActive = !isActive} class="button is-{ color }" aria-haspopup="true" aria-controls="dropdown-menu">
-            {#if text}
-                <span>{ text }</span>
-            {/if}
-            <span class="icon">
-                <i class="fas fa-{ icon }" aria-hidden="true" />
-            </span>
-        </button>
-    </div>
-    <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdown-content">
-            {#each options as option}
-                {#if option === 'divider'}
-                    <hr class="dropdown-divider" />
-                {:else}
-                    <!-- svelte-ignore a11y-missing-attribute -->
-                    <a on:click={() => setValue(option)} class="dropdown-item">
-                        { option.html || option.text }
-                    </a>
+<div class:column={column}>
+    <div class="dropdown" class:is-active={ isActive } class:is-right={ isRight }>
+        <div class="dropdown-trigger">
+            <button on:click|preventDefault={() => isActive = !isActive} class="button is-{ color }" aria-haspopup="true" aria-controls="dropdown-menu">
+                {#if text}
+                    <span>{ text }</span>
                 {/if}
-            {/each}
+                <span class="icon">
+                    <i class="fas fa-{ icon }" aria-hidden="true" />
+                </span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+                {#each options as option}
+                    {#if option === 'divider'}
+                        <hr class="dropdown-divider" />
+                    {:else}
+                        <!-- svelte-ignore a11y-missing-attribute -->
+                        <a on:click={() => setValue(option)} class="dropdown-item">
+                            { option.html || option.text }
+                        </a>
+                    {/if}
+                {/each}
+            </div>
         </div>
     </div>
 </div>
+

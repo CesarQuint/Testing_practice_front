@@ -21,6 +21,13 @@ export const HomeStore = Model('Home')
 
 export const HomesStore= Collection('Homes')
 
+//*Notifications Store
+
+export const NotificationStore = Model('Notification')
+
+export const NotificationsStore= Collection('Notifications')
+
+
 function Model(name) {
 
     const { subscribe, update, set } = writable(null)

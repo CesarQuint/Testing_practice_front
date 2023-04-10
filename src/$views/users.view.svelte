@@ -13,7 +13,6 @@
     import UserUpdate from '../users/user.update.svelte'
     import UserDelete from '../users/user.delete.svelte'
 
-    import HomeUserRead from '../homes/home.user.read.svelte'
 
     export let currentRoute = null
 

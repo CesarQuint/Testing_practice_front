@@ -15,18 +15,15 @@
 
     let loading = false
     let data = {
-        userId: $HomeStore.userId
+        street: $HomeStore.street,
+        extnumber: $HomeStore.extnumber,
+        intnumber: $HomeStore.intnumber,
+        colony: $HomeStore.colony,
+        section: $HomeStore.section,
     }
     
-    function removeHomeId(){
-       $HomeStore.userId = ''
-       data = {
-        ...data,
-        userId:$HomeStore.userId
-       }
-    }
 
-    async function updateHomeUser() {
+    async function updateHome() {
 
         loading = false
         const response = await HomesService.updateHome($HomeStore._id, data)
@@ -36,45 +33,32 @@
             loading = false
             return ToastStore.error(response.error)
         }
-
+        
         HomeStore.set(response.data)
         HomesStore.replace(response.data)
-
-        await getHome()
 
         ToastStore.success('Actualizado')
         dispatch('updated')
     }
 
-    async function getHome() {
-
-        const home = $HomesStore.find(home => home.userId === $HomeStore.userId )
-        console.log($HomesStore);
-
-        if(!home)
-            return
-
-        loading = true
-        const response = await HomesService.getHome(home._id)
-        console.log(response);
-        loading = false
-
-        if(response.error)
-            return ToastStore.error(response.error)
-
-        HomesStore.replace(response.data)
-
-    }
-
 
 </script>
 
-<Form on:submit={ updateHomeUser } on:canceled { loading } >
+<Form on:submit={ updateHome } on:canceled { loading } >
+
     <div class="columns">
-        <div class="column">
-                <div class="columns">
-                    <SelectUser bind:userId={data.userId}/>
-                </div>
-        </div>
+        <Input bind:value={ data.street } label="Calle" icon="tag" placeholder="Ingrese nombre" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.extnumber } label="Numero Exterior" icon="tag" placeholder="Ingrese descripción" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.intnumber } label="Numero Interior" icon="tag" placeholder="Ingrese nombre" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.colony } label="Colonia" icon="tag" placeholder="Ingrese descripción" />
+    </div>
+    <div class="columns">
+        <Input bind:value={ data.section } label="Seccion" icon="tag" placeholder="Ingrese descripción" />
     </div>
 </Form>

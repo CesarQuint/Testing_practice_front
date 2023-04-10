@@ -53,4 +53,9 @@
     <div class="columns">
         <Input bind:value={ data.amount } label="Cantidad" icon="dollar-sign" placeholder="Ingrese la referencia" type="number" />
     </div>
+    <div class="columns">
+        <Dropdown bind:value={data.status} column text="Estatus de pago" options={[{text:"Pendiente",value:"Pendiente..."},
+                                                                                   {text:"Completado",value:"Completado"},
+                                                                                   {text:"Fallido",value:"Fallido"}]}/>
+    </div>
 </Form>
