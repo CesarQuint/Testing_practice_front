@@ -43,7 +43,7 @@
         <Input bind:value={ data.reference } label="Referencia de pago" icon="tag" placeholder="Pago" />
     </div>
     <div class="columns">
-        <Input bind:value={ data.paymentphoto } label="Cargar Fotografia" icon="tag" placeholder="Fotografia de pago" />
+        <Input bind:value={ data.voucher } type="file" label="Comprobante" icon="tag" placeholder="Ingrese comprobante"/>
     </div>
     <div class="columns">
         <Input bind:value={ data.amount } label="Cantidad" icon="dollar-sign" placeholder="Ingrese la cantidad" type="number" />

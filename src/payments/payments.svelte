@@ -53,7 +53,7 @@
                 <td>{String(payment.home.address).substring(0,30) + "..."}</td>
                 <td>{payment.concept}</td>
                 <td>{Utils.cash(payment.amount)}</td>
-                <td><strong>{payment.status}</strong></td>
+                <td><strong>{payment.status == 'complete'?'Completado':payment.status == 'failed' ?'Fallido':'Pendiente..'}</strong></td>
                 <td>{ Utils.dateLarge(payment.created) }</td>
             </tr>
         {/each}

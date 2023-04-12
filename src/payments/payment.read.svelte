@@ -18,7 +18,7 @@
             </tr>
             <tr>
                 <th>Estatus</th>
-                <td>{$PaymentStore.status}</td>
+                <td>{$PaymentStore.status == 'complete'?'Completado':$PaymentStore.status == 'failed' ?'Fallido':'Pendiente..'}</td>
             </tr>
             <tr>
                 <th>Cantidad</th>

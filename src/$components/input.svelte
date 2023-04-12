@@ -11,8 +11,13 @@
     export let loading = false
     export let disabled = false
     export let readonly = false
+    export let required = false
 
     export let column = true
+
+    let files = []
+
+    $: files.length && (value = files[0])
 
 </script>
 
@@ -37,6 +42,10 @@
 
             {#if type === 'date'}
                 <input type="date" bind:value on:keyup|preventDefault on:focus class="input is-{ color } is-{ size }" { placeholder } { disabled } { readonly } />
+            {/if}
+
+            {#if type === 'file'}
+                <input type="file" bind:files class="input" { required } />
             {/if}
 
             {#if icon}
