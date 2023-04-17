@@ -35,7 +35,8 @@ export default function(options) {
                 })
     
                 Object.keys(options.data || {}).forEach(key => {
-                    request.field(key, options.data[key])
+                    if(options.data[key])
+                        request.field(key, options.data[key])
                 })
             }
     

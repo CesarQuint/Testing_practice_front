@@ -4,6 +4,7 @@
 
     import Utils from '../utils'
 
+   
 </script>
 
 <div class="table-container">
