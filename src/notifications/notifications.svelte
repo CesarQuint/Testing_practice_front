@@ -39,7 +39,7 @@
     }
 </style>
 
-<Search on:enter={ getNotifications } bind:value={ query.find } >
+<Search placeholder="Busca por Titulo" on:enter={ getNotifications } bind:value={ query.find } >
     <Button on:click={() => NotificationStore.modalCreate()} text="Agregar" icon="plus" color="primary" />
 </Search>
 

@@ -28,7 +28,7 @@
             return ToastStore.error(response.error)
 
         HomesStore.set(response.data.homes)
-        console.log($HomesStore);
+    
         show = !!response.data.homes.length
     }
 

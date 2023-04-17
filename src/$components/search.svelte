@@ -7,6 +7,7 @@
 
     export let value = null
     export let filters = false
+    export let placeholder = "Buscar"
     
     let input = null
     let showInput = false
@@ -47,7 +48,7 @@
     <div class="items space">
         {#if showInput}
             <div class="control has-icons-left" class:is-filters={ filters } in:fade>
-                <input bind:this={ input } bind:value on:keyup={ onKeyup } on:blur={ inputBlur } type="text" class="input" placeholder="Buscar">
+                <input bind:this={ input } bind:value on:keyup={ onKeyup } on:blur={ inputBlur } type="text" class="input" placeholder={placeholder}>
                 <span class="icon is-left"><i class="fas fa-search"></i></span>
             </div>
         {/if}

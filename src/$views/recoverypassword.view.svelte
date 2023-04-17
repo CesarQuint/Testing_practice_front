@@ -1,16 +1,9 @@
 <script>
-import { navigateTo } from 'svelte-router-spa';
+	import { navigateTo } from 'svelte-router-spa';
 
-	import UserLogin from '../users/user.login.svelte'
-	import UserRegister from '../users/user.create.svelte'
-    import User from '../users/user.login.svelte';
+    import UserRecovery from '../users/user.recoverypassword.svelte'
 
-	let logIn = true
-
-	function setChange () {
-		console.log("Llamando a setChange");
-		logIn = !logIn
-	}
+    export let currentRoute = {}
 
 </script>
 
@@ -47,9 +40,10 @@ import { navigateTo } from 'svelte-router-spa';
 	span{
 		color:rgb(125, 125, 218);
 	}
-	h1{
+	.title{
 		text-align: center;
 		text-align-last: center;
+        margin: 1rem 0 !important;
 	}
 	
 	.is-flex{
@@ -66,6 +60,18 @@ import { navigateTo } from 'svelte-router-spa';
 		overflow: hidden;
 	}
 
+	div.content{
+		display: flex;
+		flex-flow: column wrap;
+	}
+
+	i,a{
+		text-align: center;
+	}
+	i{
+		font-size: 10rem;
+	}
+
 </style>
 
 <div class="bg">
@@ -76,11 +82,12 @@ import { navigateTo } from 'svelte-router-spa';
 			<div class="card">
 					<div class="card-content">
 						<div class="content mt-4">
+							<i class="fas fa-unlock-alt"></i>
 							<h1 class="title is-4">Administrador de <span>Pagos</span></h1>
-							<h1 class="title is-5"><i class="fas fa-eye"></i> ADMINISTRADOR</h1>
-								<UserLogin/>
+                			<h2 class="title is-5">Cambio de Contraseña</h2>
+								<UserRecovery token={currentRoute.namedParams.token}/>
 								<div class="mt-4 is-flex">
-									<a on:click={()=>{navigateTo('forgot-my-password')}}>Olvide mi contraseña</a>
+									<a on:click={()=>{navigateTo('/')}}>Ir al Inicio</a>
 								</div>
 						</div>
 					</div>
@@ -88,4 +95,5 @@ import { navigateTo } from 'svelte-router-spa';
 		</div> 
 	</div>
 	</div>
+
 

@@ -27,7 +27,6 @@
 
         UsersStore.set(response.data.users)
         metadata = response.data.metadata
-        console.log($UsersStore);
     }
 
 </script>

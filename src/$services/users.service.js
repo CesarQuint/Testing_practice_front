@@ -7,7 +7,9 @@ export default {
     getUser,
     updateUser,
     updateUserPassword,
-    deleteUser
+    deleteUser,
+    sendEmail,
+    resetPassword
 }
 
 async function userLogin(data) {
@@ -61,5 +63,22 @@ async function deleteUser(userId) {
     return API({
         method: 'delete',
         route: `/users/${ userId }`,
+    })
+}
+
+async function sendEmail(data){
+    return API({
+        method: 'POST',
+        route:'/users/forgot-password',
+        data
+    })
+}
+
+
+async function resetPassword(data){
+    return API({
+        method: 'POST',
+        route:`/users/recovery-my-password/${data.token}`,
+        data
     })
 }
