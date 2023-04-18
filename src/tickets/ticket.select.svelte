@@ -10,6 +10,7 @@
 
     export let ticketId = null
     export let column = true
+    export let ticket = null
 
     let loading = false
     let query = {
@@ -26,9 +27,9 @@
         if(response.error) 
             return ToastStore.error(response.error)
 
-        TicketsStore.set(response.data.homes)
+        TicketsStore.set(response.data.tickets)
 
-        show = !!response.data.homes.length
+        show = !!response.data.tickets.length
     }
 
     
@@ -39,17 +40,17 @@
     show = false
 
     if(query.find.length > 1)
-        getHomes()
+        getTickets()
     }
 
     function onSelect(event) {
 
-    const ticket = event.detail
+    ticket = event.detail
 
     ticketId = ticket._id
     query.find = ticket.concept
 
-    dispatch('select', home)
+    dispatch('select', ticket)
     }
 
 </script>
@@ -64,6 +65,6 @@
     label="Ticket"
     placeholder="Buscar casa"
     items={ $TicketsStore }
-    prop="address"
+    prop="concept"
     { column }
 />

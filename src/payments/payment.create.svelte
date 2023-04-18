@@ -9,13 +9,19 @@
     import Form from '../$components/form.svelte'
 
     import HomeSelect from '../homes/home.select.svelte'
+    import TicketSelect from '../tickets/ticket.select.svelte'
 
     const dispatch = createEventDispatcher()
 
     let loading = false
     let data = {}
+    let ticket = null
 
     async function createPayment() {
+        
+        data.concept = ticket.concept
+        data.amount = ticket.amount
+        data.ticketId = ticket._id
 
         loading = true
         const response = await PaymentsService.createPayment(data)
@@ -34,10 +40,10 @@
 
 <Form on:submit={ createPayment } on:canceled { loading } >
     <div class="columns">
-        <HomeSelect bind:homeId={data.homeId}/>
+        <TicketSelect bind:ticketId={data.ticketId} bind:ticket/>
     </div>
     <div class="columns">
-        <Input bind:value={ data.concept } label="Concepto de Pago" icon="tag" placeholder="Concepto..." />
+        <HomeSelect bind:homeId={data.homeId}/>
     </div>
     <div class="columns">
         <Input bind:value={ data.reference } label="Referencia de pago" icon="tag" placeholder="Pago" />
@@ -45,7 +51,12 @@
     <div class="columns">
         <Input bind:value={ data.voucher } type="file" label="Comprobante" icon="tag" placeholder="Ingrese comprobante"/>
     </div>
-    <div class="columns">
-        <Input bind:value={ data.amount } label="Cantidad" icon="dollar-sign" placeholder="Ingrese la cantidad" type="number" />
-    </div>
+    {#if ticket != null}
+        <div class="columns">
+            <Input bind:value={ ticket.concept } readonly label="Concepto de Pago" icon="tag" placeholder="Concepto..." />
+        </div>
+        <div class="columns">
+            <Input bind:value={ ticket.amount } readonly label="Cantidad" icon="dollar-sign" placeholder="Ingrese la cantidad" type="number" />
+        </div>
+    {/if}
 </Form>
