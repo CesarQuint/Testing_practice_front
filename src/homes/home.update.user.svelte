@@ -7,9 +7,7 @@
     import HomesService from '../$services/homes.service'
     import SelectUser from '../users/user.select.svelte'
 
-    import Input from '../$components/input.svelte'
     import Form from '../$components/form.svelte'
-    import Tag from '../$components/tag.svelte' 
 
     const dispatch = createEventDispatcher()
 
@@ -18,13 +16,6 @@
         userId: $HomeStore.userId
     }
     
-    function removeHomeId(){
-       $HomeStore.userId = ''
-       data = {
-        ...data,
-        userId:$HomeStore.userId
-       }
-    }
 
     async function updateHomeUser() {
 
@@ -40,27 +31,34 @@
         HomeStore.set(response.data)
         HomesStore.replace(response.data)
 
-        await getHome()
+        console.log($HomesStore);
+       
+        await getHome(response.data.userId)
 
         ToastStore.success('Actualizado')
         dispatch('updated')
     }
 
-    async function getHome() {
+    async function getHome(userId) {
 
-        const home = $HomesStore.find(home => home.userId === $HomeStore.userId )
+        const homes = $HomesStore.filter(home => home.userId == userId)
+        if(homes.length > 0){
+            homes.forEach(home => {
+                console.log(home.updated);
+            })
+        }
 
-        if(!home)
-            return
+        // if(!home)
+        //     return
 
-        loading = true
-        const response = await HomesService.getHome(home._id)
-        loading = false
+        // loading = true
+        // const response = await HomesService.getHome(home._id)
+        // loading = false
 
-        if(response.error)
-            return ToastStore.error(response.error)
+        // if(response.error)
+        //     return ToastStore.error(response.error)
 
-        HomesStore.replace(response.data)
+        // HomesStore.replace(response.data)
 
     }
 

@@ -27,7 +27,6 @@
 
         HomesStore.set(response.data.homes)
         metadata = response.data.metadata
-
     }
 
 </script>
@@ -48,7 +47,7 @@
             <tr on:click={() => HomeStore.modalRead(home)}>
                 <td>{ (index+1) + ( metadata.page * metadata.limit ) }</td>
                 <td>{ home.user ? home.user.name : 'No Asignado' }</td>
-                <td>{ 'Calle: '+ home.street + ' N.Exterior: ' + home.extnumber + ' N.Interior: ' + home.intnumber + ' Colonia: ' + home.colony + ' Seccion: ' + home.section}</td>
+                <td>{ home.address }</td>
                 <td>{ Utils.dateTimeLarge(home.created) }</td>
             </tr>
         {/each}
