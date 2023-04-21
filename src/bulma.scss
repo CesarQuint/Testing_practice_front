@@ -78,7 +78,30 @@ td {
     .table-container{
         min-height: 24rem !important;
     }
+
+    section.modal-card-body .table-container{
+        min-height: 0 !important;
+    }
 }
+
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #E7E7FB;
+  }
+
+::-webkit-scrollbar-thumb {
+    background:  #8950F0;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background:  #6f41c5;
+  }
 
 
 @import "../node_modules/bulma/sass/utilities/_all.sass";

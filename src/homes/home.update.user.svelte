@@ -1,5 +1,5 @@
 <script>
-
+    import moment from 'moment'
     import { createEventDispatcher } from 'svelte'
     import { HomeStore, HomesStore, ToastStore } from '../stores'
     import UserService from '../$services/users.service'
@@ -42,23 +42,36 @@
     async function getHome(userId) {
 
         const homes = $HomesStore.filter(home => home.userId == userId)
-        if(homes.length > 0){
-            homes.forEach(home => {
-                console.log(home.updated);
+        if(homes){
+            let coincidences = homes.map(home =>{
+                const dateToCompare = home.updated.split("Z")
+                return {
+                    homeId:home._id,
+                    dateToCompare
+                }
             })
+
+            if(moment(coincidences[0].dateToCompare[0]).isBefore(coincidences[1].dateToCompare[0])){
+                loading = true
+                const response = await HomesService.getHome(coincidences[0].homeId)
+                loading = false
+
+                if(response.error)
+                    return ToastStore.error(response.error)
+
+                return HomesStore.replace(response.data)
+            }
+
+            loading = true
+            const response = await HomesService.getHome(coincidences[1].homeId)
+            loading = false
+
+            if(response.error)
+                return ToastStore.error(response.error)
+
+            return HomesStore.replace(response.data)
+
         }
-
-        // if(!home)
-        //     return
-
-        // loading = true
-        // const response = await HomesService.getHome(home._id)
-        // loading = false
-
-        // if(response.error)
-        //     return ToastStore.error(response.error)
-
-        // HomesStore.replace(response.data)
 
     }
 

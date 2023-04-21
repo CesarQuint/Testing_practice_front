@@ -21,21 +21,24 @@
                 <td>{$PaymentStore.status == 'complete'?'Completado':$PaymentStore.status == 'failed' ?'Fallido':'Pendiente..'}</td>
             </tr>
             <tr>
-                <th>Cantidad</th>
-                <td>{Utils.cash($PaymentStore.amount)}</td>
-            </tr>
-            <tr>
                 <th>Concepto</th>
                 <td>{$PaymentStore.concept}</td>
+            </tr>
+            <tr>
+                <th>Cantidad</th>
+                <td>{Utils.cash($PaymentStore.amount)}</td>
             </tr>
             <tr>
                 <th>Referencia</th>
                 <td>{$PaymentStore.reference}</td>
             </tr>
-            <tr>
-                <th>Voucher de pago</th>
-                <td><a href={$PaymentStore.voucher} target="blanck">Revisa el Voucher</a></td>
-            </tr>
+            {#if $PaymentStore.voucher}
+                <tr>
+                    <th>Voucher de pago</th>
+                    <td><a href={$PaymentStore.voucher} target="blanck">Revisa el Voucher</a></td>
+                </tr>
+            {/if}
+           
         </tbody>
     </table>
 </div>
