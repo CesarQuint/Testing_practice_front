@@ -28,9 +28,14 @@ import { navigateTo } from 'svelte-router-spa';
 		left: 0;
 	}
 
+	div.container{
+		margin-top: 10rem;
+		transition: all;
+	}
+
 	@media(min-width: 768px){
 		div.container{
-		margin-top: 4rem !important;
+		margin-top: 15rem !important;
 		}
 
 		.is-flex{
@@ -72,8 +77,7 @@ import { navigateTo } from 'svelte-router-spa';
 			<div class="card">
 					<div class="card-content">
 						<div class="content mt-4">
-							<h1 class="title is-4">Administrador de <span>Pagos</span></h1>
-							<h1 class="title is-5"><i class="fas fa-eye"></i> ADMINISTRADOR</h1>
+							<h1 class="title is-4"><i class="fas fa-eye"></i>  Administrador de <span>Pagos</span></h1>
 								<UserLogin/>
 								<div class="mt-4 is-flex">
 									<a on:click={()=>{navigateTo('forgot-my-password')}}>Olvide mi contraseña</a>

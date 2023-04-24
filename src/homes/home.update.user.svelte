@@ -42,37 +42,23 @@
     async function getHome(userId) {
 
         const homes = $HomesStore.filter(home => home.userId == userId)
-        if(homes){
-            let coincidences = homes.map(home =>{
-                const dateToCompare = home.updated.split("Z")
-                return {
-                    homeId:home._id,
-                    dateToCompare
-                }
-            })
+        
+        if(!homes.length || homes.length < 2)
+            return
 
-            if(moment(coincidences[0].dateToCompare[0]).isBefore(coincidences[1].dateToCompare[0])){
-                loading = true
-                const response = await HomesService.getHome(coincidences[0].homeId)
-                loading = false
+        let homeReplaceId = homes[1]._id
 
-                if(response.error)
-                    return ToastStore.error(response.error)
+        if(moment(homes[0].updated).isBefore(homes[1].updated))
+            homeReplaceId = homes[0]._id
 
-                return HomesStore.replace(response.data)
-            }
+        loading = true
+        const response = await HomesService.getHome(homeReplaceId)
+        loading = false
 
-            loading = true
-            const response = await HomesService.getHome(coincidences[1].homeId)
-            loading = false
+        if(response.error)
+            return ToastStore.error(response.error)
 
-            if(response.error)
-                return ToastStore.error(response.error)
-
-            return HomesStore.replace(response.data)
-
-        }
-
+        HomesStore.replace(response.data)
     }
 
 

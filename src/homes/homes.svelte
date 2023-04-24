@@ -31,7 +31,7 @@
 
 </script>
 
-<Search on:enter={ getHomes } bind:value={ query.find } >
+<Search placeholder="Busca por direccion ej: Calle: 34....." on:enter={ getHomes } bind:value={ query.find } >
     <Button on:click={() => HomeStore.modalCreate()} text="Agregar" icon="plus" color="primary" />
 </Search>
 

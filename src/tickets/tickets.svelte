@@ -33,7 +33,7 @@
 
 </script>
 
-<Search on:enter={ getTickets } bind:value={ query.find } >
+<Search placeholder="Busca por Concepto" on:enter={ getTickets } bind:value={ query.find } >
     <Button on:click={() => TicketStore.modalCreate()} text="Agregar" icon="plus" color="primary" />
 </Search>
 

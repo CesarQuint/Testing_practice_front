@@ -1,5 +1,8 @@
 <script>
 
+    import Flatpickr from 'svelte-flatpickr';
+    import 'flatpickr/dist/flatpickr.css';
+
     export let type = 'text'
     export let value = null
     export let label = null
@@ -12,6 +15,7 @@
     export let disabled = false
     export let readonly = false
     export let required = false
+    export let minDate = null
 
     export let column = true
 
@@ -41,7 +45,10 @@
             {/if}
 
             {#if type === 'date'}
-                <input type="date" bind:value on:keyup|preventDefault on:focus class="input is-{ color } is-{ size }" { placeholder } { disabled } { readonly } />
+                <Flatpickr bind:value class="input" {placeholder} options={{
+                    dateFormat: "d/m/Y",
+                    minDate
+                }}/>
             {/if}
 
             {#if type === 'file'}

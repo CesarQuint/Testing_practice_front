@@ -1,5 +1,5 @@
 <script>
-
+    import Config from '../config'
     import { navigateTo } from 'svelte-router-spa'
     import { ToastStore } from '../stores'
 
@@ -10,10 +10,14 @@
     import Form from '../$components/form.svelte'
 
     let loading = false
-    let data = {}
+    let data = {
+        url: Config.hostApp,
+        name: 'Administrador',
+        subject: 'Recuperar Contraseña',
+        template: 'reset',
+    }
 
     async function sendEmail() {
-
 
         loading = true
         const response = await UsersService.sendEmail(data)
