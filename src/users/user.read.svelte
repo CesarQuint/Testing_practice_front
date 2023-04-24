@@ -24,7 +24,7 @@
             <slot name="home"></slot>
             <tr>
                 <th>Fecha de registro</th>
-                <td>{ Utils.dateTimeLarge($UserStore.created) }</td>
+                <td>{ Utils.dateLarge($UserStore.created) }</td>
             </tr>
         </tbody>
     </table>

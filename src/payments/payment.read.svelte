@@ -13,12 +13,14 @@
     <table class="table is-fullwidth">
         <tbody>
             <tr>
-                <th>Casa</th>
-                <td>{$PaymentStore.home.address}</td>  
+                <th>Estatus</th>
+                <td><strong>
+                    {$PaymentStore.status == 'complete'?'Completado':$PaymentStore.status == 'failed' ?'Fallido':'Pendiente..'}
+                </strong></td>
             </tr>
             <tr>
-                <th>Estatus</th>
-                <td>{$PaymentStore.status == 'complete'?'Completado':$PaymentStore.status == 'failed' ?'Fallido':'Pendiente..'}</td>
+                <th>Casa</th>
+                <td>{$PaymentStore.home.address}</td>  
             </tr>
             <tr>
                 <th>Concepto</th>
