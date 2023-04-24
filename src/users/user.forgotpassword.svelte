@@ -13,6 +13,7 @@
     let data = {
         url: Config.hostApp,
         name: 'Administrador',
+        type:"Administrador de Pagos",
         subject: 'Recuperar Contraseña',
         template: 'reset',
     }
