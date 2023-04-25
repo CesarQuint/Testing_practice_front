@@ -1,20 +1,23 @@
 <script>
 
+    import { onMount } from 'svelte';
 
     import Graphic from '../$components/graphic.svelte'
 
     import GraphicsService from '../$services/graphics.service.js'
 
     let loading = false
-    let query = {}
+    export let ticketId = null
 
     let labels = []
     let datasets = []
 
-    function getPayments() {
+    onMount(getTickets)
+
+    async function getTickets() {
 
         loading = true
-        const response = await GraphicsService.getPayments(query)
+        const response = await GraphicsService.getTicketGraphic(ticketId)
         loading = false
 
         if(response.error)
@@ -27,4 +30,5 @@
 
 </script>
 
-<Graphic type="bar" { labels } { datasets } />
+<p>test</p>
+
