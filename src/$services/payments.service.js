@@ -28,7 +28,8 @@ async function updatePayment (paymentId,data){
     return API({
         method:'put',
         route:`/payments/${paymentId}`,
-        data
+        data,
+        isForm: true
     })
 }
 

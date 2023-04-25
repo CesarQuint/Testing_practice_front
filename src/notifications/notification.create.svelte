@@ -9,7 +9,6 @@
     import Form from '../$components/form.svelte'
     import Dropdown from '../$components/dropdown.svelte'
 
-    import UserSelect from '../users/user.select.svelte'
 
     const dispatch = createEventDispatcher()
 

@@ -16,16 +16,16 @@
         homeId: $PaymentStore.homeId,
         concept: $PaymentStore.concept,
         reference: $PaymentStore.reference,
-        paymentphoto: $PaymentStore.paymentphoto,
+        voucher: $PaymentStore.voucher,
         amount: $PaymentStore.amount,
         status:$PaymentStore.status
     }
 
     async function updatePayment() {
 
-        loading = false
-        const response = await PaymentsService.updatePayment($PaymentStore._id, data)
         loading = true
+        const response = await PaymentsService.updatePayment($PaymentStore._id, data)
+        loading = false
 
         if(response.error)
             return ToastStore.error(response.error)
@@ -46,9 +46,13 @@
     <div class="columns">
         <Input bind:value={ data.reference } label="Referencia" icon="tag" placeholder="Ingrese la referencia" />
     </div>
-    <div class="columns">
-        <Input bind:value={ data.paymentphoto } label="Foto de Pago" icon="tag" placeholder="Ingrese la foto" />
-    </div>
+
+    {#if $PaymentStore.voucher }
+        <div class="columns">
+            <Input bind:value={ data.voucher } type="file" label="Comprobante" icon="tag" placeholder="Ingrese comprobante"/>
+        </div>
+    {/if}
+    
     <div class="columns">
         <Input bind:value={ data.amount } label="Cantidad" icon="dollar-sign" placeholder="Ingrese la referencia" type="number" />
     </div>

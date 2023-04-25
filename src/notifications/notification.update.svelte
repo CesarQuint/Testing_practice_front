@@ -21,9 +21,9 @@
 
     async function updateNotification() {
 
-        loading = false
-        const response = await NotificationsService.updateNotification($NotificationStore._id, data)
         loading = true
+        const response = await NotificationsService.updateNotification($NotificationStore._id, data)
+        loading = false
 
         if(response.error){
             loading = false
