@@ -5,11 +5,9 @@
 
     import Graphic from '../$components/graphic.svelte'
     import GraphicTicket from '../graphics/graphics.tickets.svelte'
-    import SelectTicket from '../tickets/ticket.select.svelte'
+  
    
     export let currentRoute = null
-
-    let ticket = {}
 
 
 </script>
@@ -21,10 +19,6 @@
 
     </div>
     <div>
-        <SelectTicket bind:ticket={ticket} on:select={()=>{TicketStore.set(ticket)
-        }}/>
-        {#if $TicketStore}
-            <GraphicTicket ticketId={$TicketStore._id}/>
-        {/if}
+            <GraphicTicket/>
     </div>
 </Menu>

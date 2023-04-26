@@ -1,9 +1,10 @@
 <script>
-
+  
     import Chart from 'chart.js'
 
     export let labels = []
     export let datasets = []
+    export let loading
 
     export let chartType = 'line'
     export let colorRandom = false
@@ -14,6 +15,7 @@
 
     let chart
     let canvas
+    
 
     function setChart() {
 
@@ -48,5 +50,4 @@
     }
 
 </script>
-
-<canvas bind:this={canvas} width={100}></canvas>
+    <canvas bind:this={canvas} width={100}></canvas>
