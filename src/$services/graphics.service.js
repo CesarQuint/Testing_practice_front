@@ -12,10 +12,10 @@ function getTicketGraphic(ticketId) {
     })
 }
 
-function getPaymentsGraphic(query) {
+function getPaymentsGraphic(data) {
     return API({
-        method: 'get',
+        method: 'post',
         route: '/graphics/payments',
-        query
+        data
     })
 }
