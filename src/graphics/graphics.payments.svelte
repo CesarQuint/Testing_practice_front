@@ -1,9 +1,6 @@
 <script>
-   import moment from 'moment'
-
 
     import Graphic from '../$components/graphic.svelte'
-    import SelectTicket from '../tickets/ticket.select.svelte'
     import Loading from '../$components/loading.svelte'
     import Form from '../$components/form.svelte'
     import Select from '../$components/select.svelte'
@@ -11,19 +8,17 @@
     import Button from '../$components/button.svelte'
 
     import GraphicsService from '../$services/graphics.service.js'
-
-    import Utils from '../utils'
  
     let data ={} 
     let loading = false
-    let ticket = null
 
     let labels = []
     let datasets = []
 
 
     async function getPayments() {
-        console.log(data);
+        labels = []
+        datasets = []
 
         loading = true
         const response = await GraphicsService.getPaymentsGraphic(data)
@@ -32,6 +27,8 @@
         if(response.error)
             return ToastStore.error(response.error)
 
+        labels = response.data.labels
+        datasets = response.data.datasets
     }
 
 
@@ -51,9 +48,12 @@
                 </div>
                 <div class="columns">  
                         {#if data.dateType == "month"}
-                        <div class="column">
-                            <Input type="date"/>
-                        </div>
+                            <div class="column is-half">
+                                <Input bind:value={data.datestart} label="Mes de Inicio" icon="calendar" placeholder="Ingrese fecha de Inicio de busqueda" type="date"/>
+                            </div> 
+                            <div class="column is-half">
+                                <Input bind:value={data.dateend} label="Mes Final" icon="calendar" placeholder="Ingrese fecha Final de busqueda" type="date" minDate={data.daystart} />
+                            </div>
                         {/if}
                         {#if data.dateType == "day"}
                         <div class="column is-half">
@@ -72,6 +72,10 @@
             </Form>
         </div>
     </div>
+
+    {#if labels.length > 0}
+        <Graphic bind:loading={loading} chartType="bar" colorRandom labels={labels} datasets={datasets}/>
+    {/if}
        
 
 

@@ -52,56 +52,65 @@
         font-size: 5rem;
         margin: 2rem;
     }
+
+    .content{
+        margin-top: 1rem;
+        border-top:  1px solid rgb(226, 226, 226);
+    }
 </style>
 
-<SelectTicket bind:ticket={ticket} on:select={()=>{getTickets()}}/>
+<div class="content">
+    <SelectTicket bind:ticket={ticket} on:select={()=>{getTickets()}}/>
 
-    <div class="columns tickets">
-        <div class="column is-two-thirds no-chart">
-            {#if $TicketStore && loading == false}
-                <Graphic bind:loading={loading} colorRandom chartType="pie" labels={labels} datasets={datasets}/>
-            {/if}
-            {#if !$TicketStore}
-                <p class="icon">
-                    <i class="fas fa-chart-pie fa-lg" style="color: #d9d9d9;"></i>
-                </p> 
-                <p class="text">
-                Ve el porcentaje del pago de tus Tickets...
-                </p>
-            {/if}
-
-    </div>
-    <div class="column is-one-third">
-        
-        <div class="table-container">
-            <table class="table is-hoverable is-fullwidth">
+        <div class="columns tickets">
+            <div class="column is-two-thirds no-chart">
                 {#if $TicketStore && loading == false}
-                <thead>
-                    <strong>
-                        {$TicketStore.concept}
-                    </strong>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>Cantidad</th>
-                        <td>{Utils.cash($TicketStore.amount)}</td>
-                    </tr>
-                    <tr>
-                        <th>Pagados</th>
-                        <td>{datasets[0]}</td>
-                    </tr>
-                    <tr>
-                        <th>Sin Pagar</th>
-                        <td>{datasets[1]}</td>
-                    </tr> 
-                    <tr>
-                        <th>Total Pagado</th>
-                        <td>{Utils.cash($TicketStore.amount*datasets[0])}</td>
-                    </tr>  
-                </tbody>
+                    <Graphic bind:loading={loading} colorRandom chartType="pie" labels={labels} datasets={datasets}/>
                 {/if}
-            </table>
+                {#if !$TicketStore}
+                    <p class="icon">
+                        <i class="fas fa-chart-pie fa-lg" style="color: #d9d9d9;"></i>
+                    </p> 
+                    <p class="text">
+                    Ve el porcentaje del pago de tus Tickets...
+                    </p>
+                {/if}
+    
+        </div>
+        <div class="column is-one-third">
+            
+            <div class="table-container">
+                <table class="table is-hoverable is-fullwidth">
+                    {#if $TicketStore && loading == false}
+                    <thead>
+                        <strong>
+                            {$TicketStore.concept}
+                        </strong>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Cantidad</th>
+                            <td>{Utils.cash($TicketStore.amount)}</td>
+                        </tr>
+                        <tr>
+                            <th>Pagados</th>
+                            <td>{datasets[0]}</td>
+                        </tr>
+                        <tr>
+                            <th>Sin Pagar</th>
+                            <td>{datasets[1]}</td>
+                        </tr> 
+                        <tr>
+                            <th>Total Pagado</th>
+                            <td>{Utils.cash($TicketStore.amount*datasets[0])}</td>
+                        </tr>  
+                    </tbody>
+                    {/if}
+                </table>
+            </div>
         </div>
     </div>
+    
 </div>
+
 

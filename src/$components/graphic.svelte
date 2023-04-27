@@ -1,11 +1,10 @@
 <script>
   
     import Chart from 'chart.js'
-  import { onDestroy } from 'svelte';
 
     export let labels = []
     export let datasets = []
-    export let loading
+   
 
     export let chartType = 'line'
     export let colorRandom = false
@@ -23,7 +22,7 @@
         color = colorRandom? getColors(labels) : color
 
         const chartData = {
-            labels: labels,
+            labels,
             datasets: [{
                 label: '',
                 data: datasets,
