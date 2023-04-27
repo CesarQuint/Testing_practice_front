@@ -36,16 +36,46 @@
 
 </script>
 
+<style>
+    .columns.tickets{
+        min-height: 24rem;
+    }
+    .column.no-chart{
+        display: flex;
+        justify-content: center;
+        min-height: 24rem;
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    p.icon{
+        font-size: 5rem;
+        margin: 2rem;
+    }
+</style>
+
 <SelectTicket bind:ticket={ticket} on:select={()=>{getTickets()}}/>
 
-{#if $TicketStore && loading == false}
-<div class="columns">
-    <div class="column is-two-thirds">
-        <Graphic bind:loading={loading} colorRandom chartType="pie" labels={labels} datasets={datasets}/>
+    <div class="columns tickets">
+        <div class="column is-two-thirds no-chart">
+            {#if $TicketStore && loading == false}
+                <Graphic bind:loading={loading} colorRandom chartType="pie" labels={labels} datasets={datasets}/>
+            {/if}
+            {#if !$TicketStore}
+                <p class="icon">
+                    <i class="fas fa-chart-pie fa-lg" style="color: #d9d9d9;"></i>
+                </p> 
+                <p class="text">
+                Ve el porcentaje del pago de tus Tickets...
+                </p>
+            {/if}
+
     </div>
     <div class="column is-one-third">
+        
         <div class="table-container">
             <table class="table is-hoverable is-fullwidth">
+                {#if $TicketStore && loading == false}
                 <thead>
                     <strong>
                         {$TicketStore.concept}
@@ -69,15 +99,9 @@
                         <td>{Utils.cash($TicketStore.amount*datasets[0])}</td>
                     </tr>  
                 </tbody>
+                {/if}
             </table>
         </div>
     </div>
-
 </div>
-{/if}
-{#if !$TicketStore && loading == true}
-<div class="columns">
-    <Loading loading={loading}/>
-</div>
-{/if}
 

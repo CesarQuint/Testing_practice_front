@@ -1,6 +1,7 @@
 <script>
   
     import Chart from 'chart.js'
+  import { onDestroy } from 'svelte';
 
     export let labels = []
     export let datasets = []
@@ -49,5 +50,12 @@
         })
     }
 
+
 </script>
+<style>
+    canvas{
+        transition: all 500ms ease;
+        transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+</style>
     <canvas bind:this={canvas} width={100}></canvas>

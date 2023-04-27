@@ -3,8 +3,8 @@
 
     import Menu from '../$layouts/menu.svelte'
 
-    import Graphic from '../$components/graphic.svelte'
     import GraphicTicket from '../graphics/graphics.tickets.svelte'
+    import GraphicPayment from '../graphics/graphics.payments.svelte'
   
    
     export let currentRoute = null
@@ -13,12 +13,10 @@
 </script>
 
 <Menu path={ currentRoute.path }>
-    <div class="columns is-3">
-
-        <Graphic colorRandom chartType="bar" labels={['ivan', 'cesar', 'Marco']} datasets={[29, 21, 32]} />
-
+    <div>
+        <GraphicPayment/>
     </div>
     <div>
-            <GraphicTicket/>
+        <GraphicTicket/>
     </div>
 </Menu>
