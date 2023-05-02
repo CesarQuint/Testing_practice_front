@@ -8,7 +8,6 @@ import { navigateTo } from 'svelte-router-spa';
 	let logIn = true
 
 	function setChange () {
-		console.log("Llamando a setChange");
 		logIn = !logIn
 	}
 

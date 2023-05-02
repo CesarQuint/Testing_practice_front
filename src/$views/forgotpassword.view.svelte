@@ -7,7 +7,6 @@
 	let logIn = true
 
 	function setChange () {
-		console.log("Llamando a setChange");
 		logIn = !logIn
 	}
 

@@ -31,7 +31,7 @@
         HomeStore.set(response.data)
         HomesStore.replace(response.data)
 
-        console.log($HomesStore);
+     
        
         await getHome(response.data.userId)
 
