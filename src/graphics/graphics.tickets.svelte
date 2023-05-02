@@ -1,4 +1,5 @@
 <script>
+    import { onMount } from 'svelte';
     import {TicketStore} from '../stores'
 
     import Graphic from '../$components/graphic.svelte'
@@ -16,6 +17,10 @@
     let labels = []
     let datasets = []
 
+    onMount(()=>{
+        TicketStore.set(null)
+    })
+
     async function getTickets() {
         TicketStore.set(null)
 
@@ -29,7 +34,6 @@
 
         labels=["Pagados","Sin Pagar"]
         datasets = response.data.datasets
-        
         TicketStore.set(response.data.ticket)
     }
 
@@ -64,10 +68,10 @@
 
         <div class="columns tickets">
             <div class="column is-two-thirds no-chart">
-                {#if $TicketStore && loading == false}
+                {#if $TicketStore}
                     <Graphic bind:loading={loading} colorRandom chartType="pie" labels={labels} datasets={datasets}/>
                 {/if}
-                {#if !$TicketStore}
+                {#if !$TicketStore }
                     <p class="icon">
                         <i class="fas fa-chart-pie fa-lg" style="color: #d9d9d9;"></i>
                     </p> 
@@ -81,7 +85,7 @@
             
             <div class="table-container">
                 <table class="table is-hoverable is-fullwidth">
-                    {#if $TicketStore && loading == false}
+                    {#if $TicketStore}
                     <thead>
                         <strong>
                             {$TicketStore.concept}

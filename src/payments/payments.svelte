@@ -32,7 +32,7 @@
 
 </script>
 
-<Search placeholder="Buscar: Calle ....." on:enter={ getPayments } bind:value={ query.find } >
+<Search placeholder="Buscar: Concepto" on:enter={ getPayments } bind:value={ query.find } >
     <Button on:click={() => PaymentStore.modalCreate()} text="Agregar" icon="plus" color="primary" />
 </Search>
 

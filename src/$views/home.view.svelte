@@ -1,6 +1,4 @@
 <script>
-    import {TicketStore} from '../stores'
-
     import Menu from '../$layouts/menu.svelte'
 
     import GraphicTicket from '../graphics/graphics.tickets.svelte'
