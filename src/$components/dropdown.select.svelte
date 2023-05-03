@@ -9,7 +9,8 @@
     
     export let items = []
     export let prop = ''
-
+    export let prop2 =''
+    
     export let show = false
     export let column = true
 
@@ -48,7 +49,7 @@
             <div class="dropdown-menu" id="dropdown-menu" role="menu" style="width: 100%;">
                 <div class="dropdown-content">
                     {#each items as item}
-                        <div class="dropdown-item pointer" on:click={() => onSelect(item)} >{ item[prop] }</div>
+                        <div class="dropdown-item pointer" on:click={() => onSelect(item)} >{ prop2 ? item[prop2] + '-' + item[prop] : item[prop] }</div>
                     {/each}
                 </div>
             </div>

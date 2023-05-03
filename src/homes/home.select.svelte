@@ -64,5 +64,6 @@
     placeholder="Buscar casa"
     items={ $HomesStore }
     prop="address"
+    prop2="alias"
     { column }
 />

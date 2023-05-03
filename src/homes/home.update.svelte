@@ -15,6 +15,7 @@
 
     let loading = false
     let data = {
+        alias: $HomeStore.alias,
         street: $HomeStore.street,
         extnumber: $HomeStore.extnumber,
         intnumber: $HomeStore.intnumber,
@@ -46,6 +47,9 @@
 
 <Form on:submit={ updateHome } on:canceled { loading } >
 
+    <div class="columns">
+        <Input bind:value={ data.alias } label="Alias" icon="tag" placeholder="Ingrese el alias de la casa"/>
+    </div>
     <div class="columns">
         <Input bind:value={ data.street } label="Calle" icon="tag" placeholder="Ingrese nombre" />
     </div>

@@ -11,11 +11,15 @@
         <tbody>
             <tr>
                 {#if $HomeStore.user }
-                    <th>Usuario</th>
+                    <th>Dueño</th>
                     <td>{ $HomeStore.user.name }</td>
                 {/if}
                 
             </tr>
+                <tr>
+                    <th>Alias</th>
+                    <td>{ $HomeStore.alias }</td>
+                </tr>
             <tr>
                 <th>Calle</th>
                 <td>{ $HomeStore.street }</td>

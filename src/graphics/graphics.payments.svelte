@@ -13,7 +13,7 @@
     let labels = []
     let datasets = []
 
-    let show = false
+    let show = true
 
 
     async function getPayments() {
@@ -30,8 +30,8 @@
         labels = response.data.labels
         datasets = response.data.datasets
         
-        if(datasets.length > 1)
-            show = true
+        if(response.data)
+            show = false
     }
 
 
@@ -90,7 +90,7 @@
         <Graphic bind:loading={loading} chartType="bar" colorRandom labels={labels} datasets={datasets}/>
     {/if}
 
-    {#if show == false}
+    {#if show == true}
        <div class="columns">
         <div class="column iconcol">
             <i class="fas fa-chart-bar fa-lg" style="color: #d6d6d6;"></i> <p>Busca la infromacion de los pagos realizados</p>

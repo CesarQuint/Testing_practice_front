@@ -47,6 +47,6 @@
         <Input bind:value={ data.amount } label="Cantidad" icon="dollar-sign" placeholder="Ingrese monto" />
     </div>
     <div class="columns">
-        <Input type="date" label="Fecha Limite" icon="calendar" minDate="today" placeholder="Ingrese fecha Limite" bind:value={data.limited}/>
+        <Input type="date" label="Fecha Limite" icon="calendar" minDate="today" placeholder="Actualiza la fecha Limite" bind:value={data.limited}/>
     </div>
 </Form>

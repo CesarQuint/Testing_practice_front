@@ -39,6 +39,7 @@
     <thead>
         <th>#</th>
         <th>Dueño</th>
+        <th>Alias</th>
         <th>Direccion</th>
         <th>Fecha de creacion</th>
     </thead>
@@ -47,8 +48,9 @@
             <tr on:click={() => HomeStore.modalRead(home)}>
                 <td>{ (index+1) + ( metadata.page * metadata.limit ) }</td>
                 <td>{ home.user ? home.user.name : 'No Asignado' }</td>
+                <td>{ home.alias ? home.alias : '' }</td>
                 <td>{ home.address }</td>
-                <td>{ Utils.dateTimeLarge(home.created) }</td>
+                <td>{ Utils.dateLarge(home.created) }</td>
             </tr>
         {/each}
     </tbody>

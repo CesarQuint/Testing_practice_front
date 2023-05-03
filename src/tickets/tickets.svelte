@@ -43,7 +43,6 @@
         <th>Concepto</th>
         <th>Tipo</th>
         <th>Cantidad</th>
-        <th>Fecha de Creacion</th>
         <th>Fecha Limite</th>
     </thead>
     <tbody>
@@ -53,7 +52,6 @@
                 <td>{Ticket.concept}</td>
                 <td>{Ticket.type}</td>
                 <td>{Utils.cash(Ticket.amount)}</td>
-                <td>{ Utils.dateTimeLarge(Ticket.created) }</td>
                 <td>{Utils.dateLarge(Ticket.limited)}</td>
             </tr>
         {/each}

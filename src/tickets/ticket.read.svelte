@@ -8,9 +8,11 @@
     import Tabs from '../$components/tabs.svelte'
 
 
-    let option ="information"
+    export let option ="information"
    
 </script>
+
+
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-missing-attribute -->
@@ -18,12 +20,6 @@
 <div class="table-container">
     <table class="table is-fullwidth">
         <thead>
-            <div class="tabs">
-                <ul>
-                    <li on:click={()=>option="information"} class:is-active={option === 'information'}><a>Informacion</a></li>
-                    <li on:click={()=>option="charts"} class:is-active={option === 'charts'}><a><i class="fas fa-file-alt fa-xs"></i>Tabla de Pagos</a></li>
-                </ul>
-            </div>
         </thead>
         <tbody>
             {#if option == "information"}
@@ -40,11 +36,7 @@
                 <td>{Utils.cash($TicketStore.amount)}</td>
             </tr>
             <tr>
-                <th>Fecha de Creacion</th>
-                <td>{Utils.dateLarge($TicketStore.created)}</td>
-            </tr>
-            <tr>
-                <th>Fecha Limite</th>
+                <th>Fecha limite de pago</th>
                 <td>{Utils.dateLarge($TicketStore.limited)}</td>     
             </tr>
             {/if}

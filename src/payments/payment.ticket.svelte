@@ -35,20 +35,16 @@
         <thead>
             <th>#</th>
             <th>Casa</th>
-            <th>Concepto</th>
-            <th>Cantidad</th>
+            <th>Alias</th>
             <th>Estatus</th>
-            <th>Fecha de Creacion</th>
         </thead>
         <tbody>
             {#each $PaymentsStore as payment, index}
                 <tr on:click={() => PaymentStore.modalRead(payment)}>
                     <td>{ (index+1) + ( metadata.page * metadata.limit ) }</td>
                     <td>{String(payment.home.address).substring(0,30) + "..."}</td>
-                    <td>{payment.concept}</td>
-                    <td>{Utils.cash(payment.amount)}</td>
+                    <td>{payment.home.alias}</td>
                     <td><strong>{payment.status == 'complete'?'Completado':payment.status == 'failed' ?'Fallido':'Pendiente..'}</strong></td>
-                    <td>{ Utils.dateLarge(payment.created) }</td>
                 </tr>
             {/each}
         </tbody>
