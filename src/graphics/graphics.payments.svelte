@@ -6,7 +6,6 @@
     import Button from '../$components/button.svelte'
 
     import GraphicsService from '../$services/graphics.service.js'
-  import { onMount } from 'svelte';
  
     let data ={} 
     let loading = false
@@ -16,7 +15,6 @@
 
     let show = false
 
-    onMount(()=>{show =false})
 
     async function getPayments() {
         labels = []
@@ -31,6 +29,7 @@
 
         labels = response.data.labels
         datasets = response.data.datasets
+        
         if(datasets.length > 1)
             show = true
     }
